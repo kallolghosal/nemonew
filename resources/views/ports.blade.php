@@ -3,9 +3,9 @@
 @section('content')
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <h2>All Candidates</h2>
-            <table class="table table-primary table-striped mt-4">
+            <table class="table table-striped mt-4">
                 <thead>
                     <tr>
                         <td>Port Name</td>

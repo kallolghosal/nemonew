@@ -108,14 +108,14 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Inner Menu</h6>
-                        <a class="collapse-item" href="login.html">Vessel</a>
-                        <a class="collapse-item" href="register.html">Hospital</a>
+                        <a class="collapse-item" href="{{ route('vessel') }}">Vessel</a>
+                        <a class="collapse-item" href="{{ route('hospitals') }}">Hospital</a>
                         <a class="collapse-item" href="forgot-password.html">Rank</a>
-                        <a class="collapse-item" href="forgot-password.html">Grade</a>
+                        <a class="collapse-item" href="{{ route('grades') }}">Grade</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">Ports</a>
-                        <a class="collapse-item" href="blank.html">Port Agents</a>
+                        <a class="collapse-item" href="{{ route('ports') }}">Ports</a>
+                        <a class="collapse-item" href="{{ route('portagents') }}">Port Agents</a>
                     </div>
                 </div>
             </li>
