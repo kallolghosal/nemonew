@@ -14,7 +14,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $company = Company::get();
+        $company = Company::paginate(12);
         return view('company', ['companies' => $company]);
     }
 
@@ -25,7 +25,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view('add-company');
     }
 
     /**

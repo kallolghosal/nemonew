@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Vessel;
+use App\Models\Company;
 use Illuminate\Support\Facades\DB;
 
 class VesselController extends Controller
@@ -17,7 +18,7 @@ class VesselController extends Controller
     {
         $vessel = DB::table('vsl_name')
             ->leftjoin('company', 'vsl_name.company', '=', 'company.company_id')
-            ->select('vsl_name.vsl_name', 'company.company_name')
+            ->select('vsl_name.*', 'company.company_name')
             ->paginate(12);
         return view('vessel', ['vessels' => $vessel]);
     }
@@ -29,7 +30,8 @@ class VesselController extends Controller
      */
     public function create()
     {
-        //
+        $company = Company::get();
+        return view('add-vessel', ['companies' => $company]);
     }
 
     /**
@@ -62,7 +64,8 @@ class VesselController extends Controller
      */
     public function edit($id)
     {
-        //
+        $vessel = Vessel::where('id', $id)->get();
+        return view('edit-vessel', ['vessel' => $vessel]);
     }
 
     /**

@@ -25,7 +25,7 @@ class PortController extends Controller
      */
     public function create()
     {
-        //
+        return view('add-port');
     }
 
     /**
@@ -58,7 +58,8 @@ class PortController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ports = Ports::where('id', $id)->get();
+        return view('edit-port', ['ports' => $ports]);
     }
 
     /**

@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <h2>All Port Agents</h2>
+            <h2 style="display:inline">All Port Agents</h2><a href="{{ route('add-agent') }}" class="btn btn-primary btn-sm float-right">Add Port Agent</a>
             <table class="table table-striped mt-4">
                 <thead>
                     <tr>
@@ -22,7 +22,7 @@
                         <td>{{ $agent->c_person }}</td>
                         <td>{{ $agent->phone }}</td>
                         <td>{{ $agent->email }}</td>
-                        <td><a href="#"><i class="bi bi-eye"></i></a>&nbsp;<a href="#"><i class="bi bi-pencil"></i></a>&nbsp;<a href="#"><i class="bi bi-trash"></i></a></td>
+                        <td><a href="#"><i class="bi bi-eye"></i></a>&nbsp;<a href="{{ route('edit-agent', $agent->id) }}"><i class="bi bi-pencil"></i></a>&nbsp;<a href="#"><i class="bi bi-trash"></i></a></td>
                     </tr>
                     @endforeach
                 </tbody>

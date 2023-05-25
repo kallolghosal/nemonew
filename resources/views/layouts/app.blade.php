@@ -83,7 +83,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Company Options:</h6>
                         <a class="collapse-item" href="{{ route('company') }}">All Companies</a>
-                        <a class="collapse-item" href="utilities-border.html">Add Company</a>
+                        <a class="collapse-item" href="{{ route('add-company') }}">Add Company</a>
                         <a class="collapse-item" href="utilities-animation.html">Edit Company</a>
                         <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
@@ -328,8 +328,7 @@
                                     src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile

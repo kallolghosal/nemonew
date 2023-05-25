@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <h2>All Hospitals</h2>
+            <h2 style="display:inline">All Hospitals</h2> <a href="{{ route('add-hospital') }}" class="btn btn-primary btn-sm float-right">Add Hospital</a>
             <table class="table table-striped mt-4">
                 <thead>
                     <tr>

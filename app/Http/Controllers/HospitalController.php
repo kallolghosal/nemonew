@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Hospitals;
+use App\Models\States;
 
 class HospitalController extends Controller
 {
@@ -25,7 +26,8 @@ class HospitalController extends Controller
      */
     public function create()
     {
-        //
+        $states = States::get();
+        return view('add-hospital', ['states' => $states]);
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Portagents;
+use App\Models\Country;
 
 class PortagentController extends Controller
 {
@@ -25,7 +26,8 @@ class PortagentController extends Controller
      */
     public function create()
     {
-        //
+        $country = Country::get();
+        return view('add-agent', ['countries' => $country]);
     }
 
     /**
@@ -58,7 +60,9 @@ class PortagentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $agents = Portagents::where('id', $id)->get();
+        $country = Country::get();
+        return view('edit-agent', ['agents' => $agents, 'countries' => $country]);
     }
 
     /**

@@ -3,8 +3,8 @@
 @section('content')
 <div class="container-fluid">
     <div class="table-responsive">
-        <h2>All Companies</h2>
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <h2 style="display:inline">All Companies</h2> <a href="{{ route('add-company') }}" class="btn btn-primary btn-sm float-right">Add Company</a>
+        <table class="table table-bordered" width="100%" cellspacing="0">
             <thead>
                 <tr>
                     <td>Company Name</td>
@@ -26,6 +26,7 @@
                 @endforeach
             </tbody>
         </table>
+        {!! $companies->withQueryString()->links('pagination::bootstrap-5') !!}
     </div>
 </div>
 @endsection
