@@ -68,7 +68,7 @@
                         <h6 class="collapse-header">Candidate Details</h6>
                         <a class="collapse-item" href="{{ route('candidates') }}">All Candidates</a>
                         <a class="collapse-item" href="{{ route('add-candidate') }}">Add Candidate</a>
-                        <a class="collapse-item" href="#">Edit Candidate</a>
+                        <a class="collapse-item" href="{{ route('bank-accounts') }}">Bank Accounts</a>
                     </div>
                 </div>
             </li>

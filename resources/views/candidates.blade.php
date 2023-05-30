@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <h2>All Candidates</h2>
+            <h2 style="display:inline">All Candidates</h2><a href="{{ route('add-candidate') }}" class="btn btn-primary btn-sm float-right">Add Company</a>
             <table class="table table-striped mt-4" id="dataTable">
                 <thead>
                     <tr>

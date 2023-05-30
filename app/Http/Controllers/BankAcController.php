@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Vessel;
-use App\Models\Company;
-use Illuminate\Support\Facades\DB;
+use App\Models\BankAcs;
 
-class VesselController extends Controller
+class BankAcController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +14,8 @@ class VesselController extends Controller
      */
     public function index()
     {
-        $vessel = DB::table('vsl_name')
-            ->leftjoin('company', 'vsl_name.company', '=', 'company.company_id')
-            ->select('vsl_name.*', 'company.company_name')
-            ->paginate(12);
-        return view('vessel', ['vessels' => $vessel]);
+        $bankacs = BankAcs::paginate(12);
+        return view('bank-accounts', ['bankacs' => $bankacs]);
     }
 
     /**
@@ -30,8 +25,7 @@ class VesselController extends Controller
      */
     public function create()
     {
-        $company = Company::get();
-        return view('add-vessel', ['companies' => $company]);
+        return view('add-bankac');
     }
 
     /**
@@ -64,13 +58,8 @@ class VesselController extends Controller
      */
     public function edit($id)
     {
-        //$vessel = Vessel::where('id', $id)->get();
-        $vessel = DB::table('vsl_name')
-            ->leftjoin('company', 'vsl_name.company', '=', 'company.company_id')
-            ->select('vsl_name.*', 'company.company_name')
-            ->where('vsl_name.id', $id)
-            ->get();
-        return view('edit-vessel', ['vessel' => $vessel]);
+        $bankacs = BankAcs::where('id', $id)->get();
+        return view('edit-bank', ['banks' => $bankacs]);
     }
 
     /**
