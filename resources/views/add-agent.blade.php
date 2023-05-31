@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h2>Add Port Agent</h2>
+            <h2 style="display:inline;">Add Port Agent</h2><a href="{{ route('portagents') }}" class="btn btn-primary btn-sm float-right">All Agents</a>
             <p class="mt-4"></p>
             <form action="" method="post">
                 <div class="row">

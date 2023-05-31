@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h2>Edit Company</h2>
+            <h2 style="display:inline;">Edit Company</h2><a href="{{ route('company') }}" class="btn btn-primary btn-sm float-right">All Companies</a>
             @foreach ($company as $camp)
             <p class="mt-4"></p>
             <form action="" method="post">

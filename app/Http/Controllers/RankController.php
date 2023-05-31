@@ -3,13 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\NemoUser;
-use App\Models\Grades;
-use App\Models\Country;
-use App\Models\VslType;
-use App\Models\CountryCode;
+use App\Models\Ranks;
 
-class CandidatesController extends Controller
+class RankController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +14,8 @@ class CandidatesController extends Controller
      */
     public function index()
     {
-        $candidates = NemoUser::paginate(12);
-        return view('candidates', ['candidates' => $candidates]);
+        $ranks = Ranks::paginate(12);
+        return view('ranks', ['ranks' => $ranks]);
     }
 
     /**
@@ -29,11 +25,7 @@ class CandidatesController extends Controller
      */
     public function create()
     {
-        $grade = Grades::get();
-        $country = Country::get();
-        $vsltype = VslType::get();
-        $ccode = CountryCode::get();
-        return view('add-candidate', ['grades' => $grade, 'countries' => $country, 'vsltypes' => $vsltype, 'ccodes' => $ccode]);
+        return view('add-rank');
     }
 
     /**
@@ -66,8 +58,8 @@ class CandidatesController extends Controller
      */
     public function edit($id)
     {
-        $candidate = NemoUser::where('mem_id', $id)->get();
-        return view('edit-candidate', ['candidate' => $candidate]);
+        $rank = Ranks::where('id', $id)->get();
+        return view('edit-rank', ['rank' => $rank]);
     }
 
     /**

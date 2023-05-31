@@ -10,6 +10,7 @@ use App\Http\Controllers\PortagentController;
 use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\BankAcController;
+use App\Http\Controllers\RankController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,5 +58,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('edit-vessel/{id}', [VesselController::class, 'edit'])->name('edit-vessel');
     Route::get('bank-accounts', [BankAcController::class, 'index'])->name('bank-accounts');
     Route::get('edit-bank/{id}', [BankAcController::class, 'edit'])->name('edit-bank');
-    Route::get('add-bankac', [BankAcController::class, 'create'])->name('add-bank-account');
+    Route::get('add-bank-account', [BankAcController::class, 'create'])->name('add-bank-account');
+    Route::get('all-ranks', [RankController::class, 'index'])->name('all-ranks');
+    Route::get('add-rank', [RankController::class, 'create'])->name('add-rank');
+    Route::get('edit-rank/{id}', [RankController::class, 'edit'])->name('edit-rank');
 });

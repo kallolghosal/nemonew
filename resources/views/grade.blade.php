@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <h2>All Grades</h2>
             <table class="table table-striped mt-4">
                 <thead>

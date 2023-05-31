@@ -84,8 +84,6 @@
                         <h6 class="collapse-header">Company Options:</h6>
                         <a class="collapse-item" href="{{ route('company') }}">All Companies</a>
                         <a class="collapse-item" href="{{ route('add-company') }}">Add Company</a>
-                        <a class="collapse-item" href="utilities-animation.html">Edit Company</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
                 </div>
             </li>
@@ -110,7 +108,7 @@
                         <h6 class="collapse-header">Inner Menu</h6>
                         <a class="collapse-item" href="{{ route('vessel') }}">Vessel</a>
                         <a class="collapse-item" href="{{ route('hospitals') }}">Hospital</a>
-                        <a class="collapse-item" href="forgot-password.html">Rank</a>
+                        <a class="collapse-item" href="{{ route('all-ranks') }}">Rank</a>
                         <a class="collapse-item" href="{{ route('grades') }}">Grade</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>

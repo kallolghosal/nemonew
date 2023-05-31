@@ -61,7 +61,8 @@ class HospitalController extends Controller
     public function edit($id)
     {
         $hospital = Hospitals::where('id', $id)->get();
-        return view('edit-hospital', ['hospital' => $hospital]);
+        $states = States::get();
+        return view('edit-hospital', ['hospital' => $hospital, 'states' => $states]);
     }
 
     /**
