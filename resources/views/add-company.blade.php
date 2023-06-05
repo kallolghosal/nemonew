@@ -6,7 +6,9 @@
         <div class="col-md-6">
             <h2 style="display: inline;">Add Company</h2><a href="{{ route('company') }}" class="btn btn-primary btn-sm float-right">All Companies</a>
             <p class="mt-4"></p>
-            <form action="" method="post">
+            
+            <form action="{{ route('store-company') }}" method="post">
+            @csrf
                 <div class="row">
                     <div class="col">
                         <label for="company">Name of Company</label>
@@ -37,16 +39,16 @@
                         <label for="ctype">Type of Company</label>
                         <select name="ctype" id="" class="form-control">
                             <option value="">Select Type</option>
-                            <option value="fpp">FPP</option>
-                            <option value="fms">FMS</option>
+                            <option value="1">FPP</option>
+                            <option value="2">FMS</option>
                         </select>
                     </div>
                     <div class="col">
                         <label for="owner">Type of Owner</label>
                         <select name="owner" id="" class="form-control">
                             <option value="">Select Type</option>
-                            <option value="owner">Owner</option>
-                            <option value="manager">Manager</option>
+                            <option value="Owner">Owner</option>
+                            <option value="Managers">Manager</option>
                         </select>
                     </div>
                 </div>

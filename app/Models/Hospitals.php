@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Hospitals extends Model
 {
     protected $table = 'hospital';
+    public $timestamps = false;
     protected $fillable = [
         'hospital',
         'doctor_name',

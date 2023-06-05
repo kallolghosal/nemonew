@@ -36,7 +36,39 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $company = new Company;
+        $comp = Company::paginate(12);
+        $validate = $request->validate([
+            'company' => 'required',
+            'contact' => 'required',
+            'addr' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'ctype' => 'required',
+            'owner' => 'required'
+        ],
+        [
+            'company.required' => 'Please enter name of company',
+            'contact.required' => 'Please enter contact person',
+            'addr.required' => 'Please enter address',
+            'phone.required' => 'Please enter phone number',
+            'email.required' => 'Please enter email address',
+            'ctype.required' => 'Please enter type of company',
+            'owner.required' => 'Please enter type of owner',
+        ]);
+
+        $company->company_name = $request->company;
+        $company->contact_person = $request->contact;
+        $company->address = $request->addr;
+        $company->phone = $request->phone;
+        $company->email = $request->email;
+        $company->b_type = $request->ctype;
+        $company->management = $request->owner;
+        $company->last_update = date('Y-m-d');
+
+        $company->save();
+
+        return \Redirect::route('company')->with(['message' => 'Company saved successfully']);
     }
 
     /**
@@ -69,9 +101,20 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $company = new Company;
+        $company->where('company_id', $request->companyid)->update([
+            'company_name' => $request->company,
+            'contact_person' => $request->contact,
+            'address' => $request->addr,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'b_type' => $request->ctype,
+            'management' => $request->owner
+        ]);
+
+        return \Redirect::route('edit-company', $request->companyid)->with(['message' => 'Company saved successfully']);
     }
 
     /**
@@ -82,6 +125,7 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Company::where('company_id', $id)->delete();
+        return \Redirect::route('company')->with(['message' => 'Company deleted successfully']);
     }
 }

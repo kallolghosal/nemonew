@@ -4,10 +4,14 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h2>Edit Hospital</h2>
+            <h2 style="display:inline;">Edit Hospital</h2><a href="{{ route('hospitals') }}" class="btn btn-primary btn-sm float-right">All Hospitals</a>
             <p class="mt-4"></p>
+            @if (session('message'))
+                <h6 class="text-success">{{ session('message') }}</h6>
+            @endif
             @foreach ($hospital as $h)
-            <form action="" method="post">
+            <form action="{{ route('update-hospital') }}" method="post">
+            @csrf
                 <label for="hospital">Name of Hospital</label>
                 <input type="text" name="hospital" value="{{ $h->hospital }}" class="form-control">
                 <p class="mt-4"></p>
@@ -46,6 +50,7 @@
                 <p class="mt-4"></p>
                 <label for="file">Uploaded File</label>
                 <input type="file" name="file" id="" class="form-control">
+                <input type="hidden" name="hspid" value="{{ $h->id }}">
                 <p class="mt-4"></p>
                 <input type="submit" value="Save" name="submit" class="btn btn-primary">
                 <p class="mt-4"></p>

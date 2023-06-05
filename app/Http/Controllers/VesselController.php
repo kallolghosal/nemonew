@@ -42,7 +42,21 @@ class VesselController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $vessel = new Vessel;
+        $validate = $request->validate([
+            'vslname' => 'required',
+            'company' => 'required'
+        ],[
+            'vslname.required' => 'Please enter vessel name',
+            'company.required' => 'Please enter name of company'
+        ]);
+
+        $vessel->vsl_name = $request->vslname;
+        $vessel->company = $request->company;
+
+        $vessel->save();
+
+        return \Redirect::route('vessel')->with(['message' => 'Vessel added successfully']);
     }
 
     /**
@@ -64,13 +78,13 @@ class VesselController extends Controller
      */
     public function edit($id)
     {
-        //$vessel = Vessel::where('id', $id)->get();
+        $company = Company::get();
         $vessel = DB::table('vsl_name')
             ->leftjoin('company', 'vsl_name.company', '=', 'company.company_id')
             ->select('vsl_name.*', 'company.company_name')
             ->where('vsl_name.id', $id)
             ->get();
-        return view('edit-vessel', ['vessel' => $vessel]);
+        return view('edit-vessel', ['vessel' => $vessel, 'companies' => $company]);
     }
 
     /**
@@ -80,9 +94,14 @@ class VesselController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        Vessel::where('id', $request->vslid)->update([
+            'vsl_name' => $request->vslname,
+            'company' => $request->company
+        ]);
+
+        return \Redirect::route('edit-vessel', $request->vslid)->with(['message' => 'Vessel updated successfully']);
     }
 
     /**
@@ -93,6 +112,7 @@ class VesselController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Vessel::where('id', $id)->delete();
+        return \Redirect::route('vessel')->with(['message' => 'Vessel deleted successfully']);
     }
 }

@@ -5,9 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <h2 style="display:inline;">Edit Company</h2><a href="{{ route('company') }}" class="btn btn-primary btn-sm float-right">All Companies</a>
+            <p class="mt-4"></p>
+            @if (session('message'))
+                <h6 class="text-success">{{ session('message') }}</h6>
+            @endif
             @foreach ($company as $camp)
             <p class="mt-4"></p>
-            <form action="" method="post">
+            <form action="{{ route('update-company') }}" method="post">
+            @csrf
                 <div class="row">
                     <div class="col">
                         <label for="company">Name of Company</label>
@@ -38,17 +43,18 @@
                         <label for="ctype">Type of Company</label>
                         <select name="ctype" id="" class="form-control">
                             <option value="">Select Type</option>
-                            <option value="fpp" @php if($camp->b_type == 1){echo 'selected';} @endphp>FPP</option>
-                            <option value="fms" @php if($camp->b_type == 2){echo 'selected';} @endphp>FMS</option>
+                            <option value="1" @php if($camp->b_type == 1){echo 'selected';} @endphp>FPP</option>
+                            <option value="2" @php if($camp->b_type == 2){echo 'selected';} @endphp>FMS</option>
                         </select>
                     </div>
                     <div class="col">
                         <label for="owner">Type of Owner</label>
                         <select name="owner" id="" class="form-control">
                             <option value="">Select Type</option>
-                            <option value="owner" @php if($camp->management === 'Owner'){echo 'selected';} @endphp>Owner</option>
-                            <option value="manager" @php if($camp->management === 'Managers'){echo 'selected';} @endphp>Manager</option>
+                            <option value="Owner" @php if($camp->management === 'Owner'){echo 'selected';} @endphp>Owner</option>
+                            <option value="Managers" @php if($camp->management === 'Managers'){echo 'selected';} @endphp>Manager</option>
                         </select>
+                        <input type="hidden" name="companyid" value="{{ $camp->company_id }}">
                     </div>
                 </div>
                 <p class="mt-4"></p>

@@ -4,11 +4,12 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h2 style="display: inline;">Add Hospital</h2>
+            <h2 style="display: inline;">Add Hospital</h2><a href="{{ route('hospitals') }}" class="btn btn-primary btn-sm float-right">All Hospitals</a>
             <p class="mt-4"></p>
-            <form action="" method="post">
-                <label for="vslname">Name of Hospital</label>
-                <input type="text" name="vslname" id="" class="form-control">
+            <form action="{{ route('save-hospital') }}" method="post">
+            @csrf
+                <label for="hospital">Name of Hospital</label>
+                <input type="text" name="hospital" id="" class="form-control">
                 <br>
                 <label for="company">Name of Doctor</label>
                 <input type="text" name="doctor" id="" class="form-control">
@@ -26,7 +27,7 @@
                         <select name="state" id="" class="form-control">
                             <option value="">Select State</option>
                             @foreach ($states as $state)
-                            <option value="{{ $state->id }}">{{ $state->name }}</option>
+                            <option value="{{ $state->name }}">{{ $state->name }}</option>
                             @endforeach
                         </select>
                     </div>

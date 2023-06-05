@@ -5,6 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <h2 style="display:inline">All Hospitals</h2> <a href="{{ route('add-hospital') }}" class="btn btn-primary btn-sm float-right">Add Hospital</a>
+            @if (session('message'))
+                <h6 class="text-success">{{ session('message') }}</h6>
+            @endif
             <table class="table table-striped mt-4">
                 <thead>
                     <tr>
@@ -24,7 +27,7 @@
                         <td>{{ $hospital->city }}</td>
                         <td>{{ $hospital->phone }}</td>
                         <td>{{ $hospital->email }}</td>
-                        <td><a href="#"><i class="bi bi-eye"></i></a>&nbsp;<a href="{{ route('edit-hospital', $hospital->id) }}"><i class="bi bi-pencil"></i></a>&nbsp;<a href="#"><i class="bi bi-trash"></i></a></td>
+                        <td><a href="#"><i class="bi bi-eye"></i></a>&nbsp;<a href="{{ route('edit-hospital', $hospital->id) }}"><i class="bi bi-pencil"></i></a>&nbsp;<a href="{{ route('delete-hospital', $hospital->id) }}" onclick="return confirm('Are you sure you want to delete this hospital?');"><i class="bi bi-trash"></i></a></td>
                     </tr>
                     @endforeach
                 </tbody>

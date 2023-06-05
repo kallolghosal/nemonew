@@ -110,6 +110,7 @@
                         <a class="collapse-item" href="{{ route('hospitals') }}">Hospital</a>
                         <a class="collapse-item" href="{{ route('all-ranks') }}">Rank</a>
                         <a class="collapse-item" href="{{ route('grades') }}">Grade</a>
+                        <a class="collapse-item" href="{{ route('discussions') }}">Discussions</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="{{ route('ports') }}">Ports</a>
