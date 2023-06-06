@@ -5,9 +5,12 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <h2 style="display:inline;">Edit Bank Accounts</h2><a href="{{ route('bank-accounts') }}" class="btn btn-primary btn-sm float-right">View All</a>
+            @if (session('message'))
+                <h6 class="text-success">{{ session('message') }}</h6>
+            @endif
             <p class="mt-4"></p>
             @foreach ($banks as $bank)
-            <form action="" method="post">
+            <form action="{{ route('update-bank-ac') }}" method="post">
                 <div class="row">
                     <div class="col">
                         <label for="memid">Member ID</label>
@@ -56,7 +59,7 @@
                 <div class="row">
                     <div class="col">
                         <label for="bookimg">Book Image</label>
-                        <input type="file" name="bookimg" value="{{ $bank->book_image }}" class="form-control">
+                        <input type="text" name="bookimg" value="{{ $bank->book_image }}" class="form-control">
                     </div>
                     <div class="col">
                         <label for="pan">PAN</label>
@@ -76,13 +79,15 @@
                     <div class="col">
                         <label for="createdby">Created By</label>
                         <input type="text" name="createdby" value="{{ $bank->created_by }}" class="form-control">
+                        <input type="hidden" name="bankid" value="{{ $bank->id }}">
                     </div>
                     <div class="col">
                         
                     </div>
                 </div>
                 <p class="mt-4"></p>
-                <input type="submit" value="Save" name="submit" class="btn btn-primary">
+                <input type="submit" value="Save" name="submit" class="btn btn-primary">&nbsp;
+                <a href="{{ route('delete-bank', $bank->id) }}" onclick="return confirm('Are you sure you want to delete this Bank Ac?');" class="btn btn-primary">Delete Bank AC</a>
                 <p class="mt-4"></p>
             </form>
             @endforeach

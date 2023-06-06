@@ -52,7 +52,8 @@
                 <input type="file" name="file" id="" class="form-control">
                 <input type="hidden" name="hspid" value="{{ $h->id }}">
                 <p class="mt-4"></p>
-                <input type="submit" value="Save" name="submit" class="btn btn-primary">
+                <input type="submit" value="Save" name="submit" class="btn btn-primary">&nbsp;
+                <a href="{{ route('delete-hospital', $h->id) }}" onclick="return confirm('Are you sure you want to delete this hospital?');" class="btn btn-primary">Delete Hospital</a>
                 <p class="mt-4"></p>
             </form>
             @endforeach

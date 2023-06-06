@@ -36,7 +36,24 @@ class RankController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ranks = new Ranks;
+        $validate = $request->validate([
+            'rank' => 'required',
+            'order' => 'required',
+            'category' => 'required'
+        ],[
+            'rank.required' => 'Please enter rank',
+            'order.required' => 'Please enter order',
+            'category.required' => 'Please enter category',
+        ]);
+
+        $ranks->rank = $request->rank;
+        $ranks->rank_order = $request->order;
+        $ranks->category = $request->category;
+
+        $ranks->save();
+
+        return \Redirect::route('all-ranks')->with(['message' => 'Rank added successfully']);
     }
 
     /**
@@ -69,9 +86,26 @@ class RankController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $ranks = new Ranks;
+        $validate = $request->validate([
+            'rank' => 'required',
+            'order' => 'required',
+            'category' => 'required'
+        ],[
+            'rank.required' => 'Please enter rank',
+            'order.required' => 'Please enter order',
+            'category.required' => 'Please enter category',
+        ]);
+
+        Ranks::where('id', $request->rankid)->update([
+            'rank' => $request->rank,
+            'rank_order' => $request->order,
+            'category' => $request->category
+        ]);
+
+        return \Redirect::route('edit-rank', $request->rankid)->with(['message' => 'Rank updated successfully']);
     }
 
     /**
@@ -82,6 +116,7 @@ class RankController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Ranks::where('id', $id)->delete();
+        return \Redirect::route('all-ranks')->with(['message' => 'Rank deleted successfully']);
     }
 }

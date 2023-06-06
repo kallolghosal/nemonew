@@ -25,7 +25,7 @@ class GradeController extends Controller
      */
     public function create()
     {
-        //
+        return view('add-grade');
     }
 
     /**
@@ -36,7 +36,11 @@ class GradeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $grade = new Grades;
+        $grade->grade = $request->grade;
+        $grade->save();
+
+        return \Redirect::route('grades')->with(['message' => 'Grade added successfully']);
     }
 
     /**
@@ -69,9 +73,12 @@ class GradeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        Grades::where('grade', $request->grade)->update([
+            'grade' => $request->grade
+        ]);
+        return \Redirect::route('edit-grade', $request->grade)->with(['message' => 'Grade updated successfully']);
     }
 
     /**
@@ -82,6 +89,7 @@ class GradeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Grades::where('grade', $id)->delete();
+        return \Redirect::route('grades')->with(['message' => 'Grade deleted successfully']);
     }
 }

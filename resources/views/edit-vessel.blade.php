@@ -25,7 +25,8 @@
                 </select>
                 <input type="hidden" name="vslid" value="{{ $vsl->id }}">
                 <p class="mt-4"></p>
-                <input type="submit" value="Save Vessel" name="submit" class="btn btn-primary">
+                <input type="submit" value="Save Vessel" name="submit" class="btn btn-primary">&nbsp;
+                <a href="{{ route('delete-vessel', $vsl->id) }}" onclick="return confirm('Are you sure you want to delete this vessel?');" class="btn btn-primary">Delete Vessel</a>
             </form>
             @endforeach
         </div>

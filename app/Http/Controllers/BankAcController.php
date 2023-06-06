@@ -69,9 +69,56 @@ class BankAcController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $bankac = new BankAcs;
+        $validate = $request->validate([
+            'memid' => 'required',
+            'acname' => 'required',
+            'acno' => 'required',
+            'bank' => 'required',
+            'branch' => 'required',
+            'bankaddr' => 'required',
+            'acaddr' => 'required',
+            'sftcode' => 'required',
+            'ifsc' => 'required',
+            'bookimg' => 'required',
+            'pan' => 'required',
+            'pancard' => 'required',
+            'types' => 'required',
+            'createdby' => 'required'
+        ],[
+            'memid.required' => 'Please enter member id',
+            'acname.required' => 'Please enter account name',
+            'acno.required' => 'Please enter account number',
+            'bank.required' => 'Please enter Bank',
+            'branch.required' => 'Please enter branch',
+            'bankaddr.required' => 'Please enter bank address',
+            'acaddr.required' => 'Please enter account address',
+            'sftcode.required' => 'Please enter swift code',
+            'ifsc.required' => 'Please enter IFSC',
+            'pan.required' => 'Please enter PAN',
+            'pancard.required' => 'Please enter PAN card'
+        ]);
+
+        $bankac->where('id', $request->bankid)->update([
+            'mem_id' => $request->memid,
+            'acct_name' => $request->acname,
+            'acct_no' => $request->acno,
+            'bank' => $request->bank,
+            'branch' => $request->branch,
+            'bank_address' => $request->bankaddr,
+            'address' => $request->acaddr,
+            'swift_code' => $request->sftcode,
+            'IFSC_Code' => $request->ifsc,
+            'book_image' => $request->bookimg,
+            'pan_number' => $request->pan,
+            'pan_card' => $request->pancard,
+            'types' => $request->types,
+            'created_by' => $request->createdby
+        ]);
+
+        return \Redirect::route('edit-bank', $request->bankid)->with(['message' => 'Bank Account updated successfully']);
     }
 
     /**
@@ -82,6 +129,7 @@ class BankAcController extends Controller
      */
     public function destroy($id)
     {
-        //
+        BankAcs::where('id', $id)->delete();
+        return \Redirect::route('bank-accounts')->with(['message' => 'Bank Account deleted successfully']);
     }
 }

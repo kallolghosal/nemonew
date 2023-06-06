@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ranks extends Model
 {
     protected $table = 'rank';
+    public $timestamps = false;
     protected $fillable = [
         'rank',
         'rank_order',

@@ -6,7 +6,8 @@
         <div class="col-md-12">
             <h2 style="display:inline">Add Bank Account</h2><a href="{{ route('bank-accounts') }}" class="btn btn-primary btn-sm float-right">View All</a>
             <p class="mt-4"></p>
-            <form action="" method="post">
+            <form action="{{ route('store-bank-ac') }}" method="post">
+                @csrf
                 <div class="row">
                     <div class="col">
                         <label for="memid">Member ID</label>

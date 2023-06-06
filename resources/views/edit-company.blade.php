@@ -58,7 +58,8 @@
                     </div>
                 </div>
                 <p class="mt-4"></p>
-                <input type="submit" value="Save Company" class="btn btn-primary">
+                <input type="submit" value="Save Company" class="btn btn-primary">&nbsp;
+                <a href="{{ route('delete-company', $camp->company_id) }}" onclick="return confirm('Are you sure you want to delete this company?');" class="btn btn-primary">Delete Company</a>
             </form>
             @endforeach
         </div>

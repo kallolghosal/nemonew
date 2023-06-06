@@ -4,10 +4,14 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h2>Edit Grade</h2>
+            <h2 style="display:inline;">Edit Grade</h2><a href="{{ route('grades') }}" class="btn btn-primary btn-sm float-right">All Grades</a>
+            @if (session('message'))
+                <h6 class="text-success">{{ session('message') }}</h6>
+            @endif
             <p class="mt-4"></p>
             @foreach($grow as $grade)
-            <form action="" method="post">
+            <form action="{{ route('update-grade') }}" method="post">
+            @csrf
                 <label for="grade">Grade</label>
                 <input type="text" name="grade" value="{{ $grade->grade }}" class="form-control">
                 <p class="mt-4"></p>
