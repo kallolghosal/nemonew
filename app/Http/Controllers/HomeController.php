@@ -58,4 +58,24 @@ class HomeController extends Controller
         return view('bdays', ['candidates' => $candidates]);
     }
 
+    /**
+     * Shows the result of search candidates
+     * 
+     * with link to candidate detail page
+     */
+    public function searchCandidate(Request $request) {
+        if(is_numeric($request->search)) {
+            $result = NemoUser::where('mem_id', $request->search)->paginate(12);
+        } else {
+            $result = NemoUser::where('fname', 'LIKE', "%{$request->search}%")->paginate(12);
+        }
+        
+        if($result->isEmpty()) {
+            return view('search', ['result' => 'No record found']);
+        } else {
+            return view('search', ['result' => $result]);
+        }
+        
+    }
+
 }

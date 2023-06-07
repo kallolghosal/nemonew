@@ -104,4 +104,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('edit-discussion/{id}', [DiscussionController::class, 'edit'])->name('edit-discussion');
 
     Route::get('birthdays', [HomeController::class, 'birthdays'])->name('birthdays');
+    Route::post('search-candidate', [HomeController::class, 'searchCandidate'])->name('search-candidate');
 });
