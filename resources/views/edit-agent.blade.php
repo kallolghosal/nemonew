@@ -5,9 +5,13 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <h2 style="display:inline">Edit Port Agent</h2><a href="{{ route('portagents') }}" class="btn btn-primary btn-sm float-right">All Agents</a>
+            @if (session('message'))
+                <h6 class="text-success">{{ session('message') }}</h6>
+            @endif
             @foreach ($agents as $agent)
             <p class="mt-4"></p>
-            <form action="" method="post">
+            <form action="{{ route('update-agent') }}" method="post">
+                @csrf
                 <div class="row">
                     <div class="col">
                         <label for="agent">Port Agent</label>
@@ -44,16 +48,18 @@
                     </div>
                     <div class="col">
                         <label for="country">Country</label>
-                        <select name="country" id="" class="form-control">
+                        <select name="country" id="" class="form-control" required>
                             <option value="">Select Country</option>
                             @foreach ($countries as $country)
                             <option value="{{ $country->country }}" @php if($country->country === $agent['country']){echo 'selected';} @endphp>{{ $country->country }}</option>
                             @endforeach
                         </select>
+                        <input type="hidden" name="agentid" value="{{ $agent['id'] }}">
                     </div>
                 </div>
                 <p class="mt-4"></p>
-                <input type="submit" value="Add Port Agent" class="btn btn-primary">
+                <input type="submit" value="Edit Port Agent" class="btn btn-primary">&nbsp;
+                <a href="{{ route('delete-agent', $agent->id) }}" onclick="return confirm('Are you sure you want to delete this agent?');" class="btn btn-primary">Delete Agent</a>
             </form>
             @endforeach
         </div>

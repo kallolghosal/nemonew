@@ -57,9 +57,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('ports', [PortController::class, 'index'])->name('ports');
     Route::get('add-port', [PortController::class, 'create'])->name('add-port');
     Route::get('edit-port/{id}', [PortController::class, 'edit'])->name('edit-port');
+    Route::post('store-port', [PortController::class, 'store'])->name('store-port');
+    Route::post('update-port', [PortController::class, 'update'])->name('update-port');
+    Route::get('delete-port/{id}', [PortController::class, 'destroy'])->name('delete-port');
+
     Route::get('port-agents', [PortagentController::class, 'index'])->name('portagents');
     Route::get('add-agent', [PortagentController::class, 'create'])->name('add-agent');
     Route::get('edit-agent/{id}', [PortagentController::class, 'edit'])->name('edit-agent');
+    Route::post('store-agent', [PortagentController::class, 'store'])->name('store-agent');
+    Route::post('update-agent', [PortagentController::class, 'update'])->name('update-agent');
+    Route::get('delete-agent/{id}', [PortagentController::class, 'destroy'])->name('delete-agent');
 
     Route::get('hospitals', [HospitalController::class, 'index'])->name('hospitals');
     Route::get('add-hospital', [HospitalController::class, 'create'])->name('add-hospital');

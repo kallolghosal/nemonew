@@ -5,8 +5,12 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <h2 style="display:inline;">Add Port Agent</h2><a href="{{ route('portagents') }}" class="btn btn-primary btn-sm float-right">All Agents</a>
+            @if (session('message'))
+                <h6 class="text-success">{{ session('message') }}</h6>
+            @endif
             <p class="mt-4"></p>
-            <form action="" method="post">
+            <form action="{{ route('store-agent') }}" method="post">
+                @csrf
                 <div class="row">
                     <div class="col">
                         <label for="agent">Port Agent</label>
@@ -46,7 +50,7 @@
                         <select name="country" id="" class="form-control">
                             <option value="">Select Country</option>
                             @foreach ($countries as $country)
-                            <option value="{{ $country->id }}">{{ $country->country }}</option>
+                            <option value="{{ $country->country }}">{{ $country->country }}</option>
                             @endforeach
                         </select>
                     </div>

@@ -38,7 +38,38 @@ class PortagentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $agent = new Portagents;
+        $validate = $request->validate([
+            'agent' => 'required',
+            'contact' => 'required',
+            'addr' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'country' => 'required'
+        ],[
+            'agent.required' => 'Please enter name of agent',
+            'contact.required' => 'Please enter contact person',
+            'addr.required' => 'Please enter address',
+            'phone.required' => 'Please enter phone no',
+            'email.required' => 'Please enter email',
+            'city.required' => 'Please enter city',
+            'state.required' => 'Please enter state',
+            'country.required' => 'Please select country'
+        ]);
+
+        $agent->port_agent = $request->agent;
+        $agent->c_person = $request->contact;
+        $agent->address = $request->addr;
+        $agent->phone = $request->phone;
+        $agent->email = $request->email;
+        $agent->city = $request->city;
+        $agent->state = $request->state;
+        $agent->country = $request->country;
+        $agent->save();
+
+        return \Redirect::route('portagents')->with(['message' => 'Agent added successfully']);
     }
 
     /**
@@ -72,9 +103,41 @@ class PortagentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $agent = new Portagents;
+        $validate = $request->validate([
+            'agent' => 'required',
+            'contact' => 'required',
+            'addr' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'country' => 'required'
+        ],[
+            'agent.required' => 'Please enter name of agent',
+            'contact.required' => 'Please enter contact person',
+            'addr.required' => 'Please enter address',
+            'phone.required' => 'Please enter phone no',
+            'email.required' => 'Please enter email',
+            'city.required' => 'Please enter city',
+            'state.required' => 'Please enter state',
+            'country.required' => 'Please select country'
+        ]);
+
+        $agent->where('id', $request->agentid)->update([
+            'port_agent' => $request->agent,
+            'c_person' => $request->contact,
+            'address' => $request->addr,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'city' => $request->city,
+            'state' => $request->state,
+            'country' => $request->country
+        ]);
+
+        return \Redirect::route('edit-agent', $request->agentid)->with(['message' => 'Port agent updated successfully']);
     }
 
     /**
@@ -85,6 +148,7 @@ class PortagentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Portagents::where('id', $id)->delete();
+        return \Redirect::route('portagents')->with(['message' => 'Agent deleted successfully']);
     }
 }

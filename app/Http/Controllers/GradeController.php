@@ -76,9 +76,9 @@ class GradeController extends Controller
     public function update(Request $request)
     {
         Grades::where('grade', $request->grade)->update([
-            'grade' => $request->grade
+            'grade' => $request->grade,
         ]);
-        return \Redirect::route('edit-grade', $request->grade)->with(['message' => 'Grade updated successfully']);
+        return \Redirect::route('grades')->with(['message' => 'Grade updated successfully']);
     }
 
     /**

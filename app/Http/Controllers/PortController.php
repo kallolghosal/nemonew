@@ -36,7 +36,11 @@ class PortController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $port = new Ports;
+        $port->port = $request->port;
+        $port->save();
+
+        return \Redirect::route('ports')->with(['message' => 'Port added successfully']);
     }
 
     /**
@@ -69,9 +73,13 @@ class PortController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        Ports::where('id', $request->portid)->update([
+            'port' => $request->port
+        ]);
+
+        return \Redirect::route('edit-port', $request->portid)->with(['message' => 'Port updated successfully']);
     }
 
     /**
@@ -82,6 +90,7 @@ class PortController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Ports::where('id', $id)->delete();
+        return \Redirect::route('ports')->with(['message' => 'Port deleted successfully']);
     }
 }
