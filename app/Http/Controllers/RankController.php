@@ -64,7 +64,8 @@ class RankController extends Controller
      */
     public function show($id)
     {
-        //
+        $result = Ranks::where('id', $id)->first();
+        return view('rank-profile', ['result' => $result]);
     }
 
     /**

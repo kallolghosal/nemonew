@@ -51,7 +51,8 @@ class GradeController extends Controller
      */
     public function show($id)
     {
-        //
+        $result = Grades::where('grade', $id)->first();
+        return view('view-grade', ['result' => $result]);
     }
 
     /**

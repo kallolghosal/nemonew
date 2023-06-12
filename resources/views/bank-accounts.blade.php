@@ -27,7 +27,7 @@
                         <td>{{ $bankac->acct_no }}</td>
                         <td>{{ $bankac->bank }}</td>
                         <td>{{ $bankac->branch }}</td>
-                        <td><a href="#"><i class="bi bi-eye"></i></a>&nbsp;<a href="{{ route('edit-bank', $bankac->id) }}"><i class="bi bi-pencil"></i></a>&nbsp;<a href="{{ route('delete-bank', $bankac->id) }}" onclick="return confirm('Are you sure you want to delete this Bank Ac?');"><i class="bi bi-trash"></i></a></td>
+                        <td><a href="{{ route('show-bank', $bankac->id) }}"><i class="bi bi-eye"></i></a>&nbsp;<a href="{{ route('edit-bank', $bankac->id) }}"><i class="bi bi-pencil"></i></a>&nbsp;<a href="{{ route('delete-bank', $bankac->id) }}" onclick="return confirm('Are you sure you want to delete this Bank Ac?');"><i class="bi bi-trash"></i></a></td>
                     </tr>
                     @endforeach
                 </tbody>

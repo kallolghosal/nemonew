@@ -47,7 +47,8 @@ class BankAcController extends Controller
      */
     public function show($id)
     {
-        //
+        $result = BankAcs::where('id', $id)->first();
+        return view('bank-detail', ['result' => $result]);
     }
 
     /**

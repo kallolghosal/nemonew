@@ -47,7 +47,8 @@ class DiscussionController extends Controller
      */
     public function show($id)
     {
-        //
+        $result = Discussions::where('disc_id', $id)->first();
+        return view('view-discussion', ['result' => $result]);
     }
 
     /**

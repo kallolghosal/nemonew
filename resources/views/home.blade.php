@@ -104,7 +104,7 @@
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Upcoming Birthdays</div>
                             @foreach($bdays as $bday)
                             <div class="row">
-                            <div class="col">{{ $bday->fname }}</div>  <div class="col">{{ $bday->dob }}</div>
+                            <div class="col"><a href="{{ route('edit-candidate', $bday->mem_id) }}">{{ $bday->fname }}</a></div>  <div class="col">{{ $bday->dob }}</div>
                             </div>
                             @endforeach
                             <p class="mt-4"></p>

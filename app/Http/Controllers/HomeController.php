@@ -42,6 +42,7 @@ class HomeController extends Controller
         $nemouser['active'] = NemoUser::where('active_details', 1)->count();
         $bdays = NemoUser::whereMonth('dob', $month)
             ->whereDay('dob', '>', $day)
+            ->where('dob', '<', '2002-01-01')
             ->orderBy('dob', 'DESC')
             ->take(12)
             ->get();

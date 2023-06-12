@@ -23,7 +23,7 @@
                     <td>{{ $rank->rank }}</td>
                     <td>{{ $rank->rank_order }}</td>
                     <td>{{ $rank->category }}</td>
-                    <td><a href="#"><i class="bi bi-eye"></i></a>&nbsp;<a href="{{ route('edit-rank', $rank->id) }}"><i class="bi bi-pencil"></i></a>&nbsp;<a href="{{ route('delete-rank', $rank->id) }}" onclick="return confirm('Are you sure you want to delete this rank?');"><i class="bi bi-trash"></i></a></td>
+                    <td><a href="{{ route('show-rank', $rank->id) }}"><i class="bi bi-eye"></i></a>&nbsp;<a href="{{ route('edit-rank', $rank->id) }}"><i class="bi bi-pencil"></i></a>&nbsp;<a href="{{ route('delete-rank', $rank->id) }}" onclick="return confirm('Are you sure you want to delete this rank?');"><i class="bi bi-trash"></i></a></td>
                 </tr>
                 @endforeach
             </tbody>

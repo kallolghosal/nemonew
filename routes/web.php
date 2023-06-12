@@ -81,6 +81,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('delete-hospital/{id}', [HospitalController::class, 'destroy'])->name('delete-hospital');
 
     Route::get('grades', [GradeController::class, 'index'])->name('grades');
+    Route::get('show-grades{id}', [GradeController::class, 'show'])->name('show-grade');
     Route::get('edit-grades/{id}', [GradeController::class, 'edit'])->name('edit-grade');
     Route::get('add-grade', [GradeController::class, 'create'])->name('add-grade');
     Route::post('store-grade', [GradeController::class, 'store'])->name('store-grade');
@@ -91,6 +92,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('edit-candidate/{id}', [CandidatesController::class, 'edit'])->name('edit-candidate');
     
     Route::get('bank-accounts', [BankAcController::class, 'index'])->name('bank-accounts');
+    Route::get('show-bank/{id}', [BankAcController::class, 'show'])->name('show-bank');
     Route::get('edit-bank/{id}', [BankAcController::class, 'edit'])->name('edit-bank');
     Route::get('add-bank-account', [BankAcController::class, 'create'])->name('add-bank-account');
     Route::post('store-bank-ac', [BankAcController::class, 'store'])->name('store-bank-ac');
@@ -98,6 +100,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('delete-bank/{id}', [BankAcController::class, 'destroy'])->name('delete-bank');
 
     Route::get('all-ranks', [RankController::class, 'index'])->name('all-ranks');
+    Route::get('show-rank/{id}', [RankController::class, 'show'])->name('show-rank');
     Route::get('add-rank', [RankController::class, 'create'])->name('add-rank');
     Route::get('edit-rank/{id}', [RankController::class, 'edit'])->name('edit-rank');
     Route::post('stroe-rank', [RankController::class, 'store'])->name('store-rank');
@@ -105,6 +108,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('delete-rank/{id}', [RankController::class, 'destroy'])->name('delete-rank');
 
     Route::get('discussions', [DiscussionController::class, 'index'])->name('discussions');
+    Route::get('show-discussion/{id}', [DiscussionController::class, 'show'])->name('show-discussion');
     Route::get('add-discussion', [DiscussionController::class, 'create'])->name('add-discussion');
     Route::get('edit-discussion/{id}', [DiscussionController::class, 'edit'])->name('edit-discussion');
 

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class BankAcs extends Model
 {
     protected $table = 'bank_details';
+    public $timestamps = false;
     protected $fillable = [
         'mem_id',
         'acct_name',

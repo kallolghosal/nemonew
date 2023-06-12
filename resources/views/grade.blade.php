@@ -24,7 +24,7 @@
                     <tr>
                         <td>{{ $count }}</td>
                         <td>{{ $grade->grade }}</td>
-                        <td><a href="#"><i class="bi bi-eye"></i></a>&nbsp;<a href="{{ route('edit-grade', $grade->grade) }}"><i class="bi bi-pencil"></i></a>&nbsp;<a href="{{ route('delete-grade', $grade->grade) }}" onclick="return confirm('Are you sure you want to delete this grade?');"><i class="bi bi-trash"></i></a></td>
+                        <td><a href="{{ route('show-grade', $grade->grade) }}"><i class="bi bi-eye"></i></a>&nbsp;<a href="{{ route('edit-grade', $grade->grade) }}"><i class="bi bi-pencil"></i></a>&nbsp;<a href="{{ route('delete-grade', $grade->grade) }}" onclick="return confirm('Are you sure you want to delete this grade?');"><i class="bi bi-trash"></i></a></td>
                     </tr>
                     @php
                     $count++;

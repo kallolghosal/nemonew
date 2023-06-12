@@ -21,7 +21,7 @@
                     <td>{{ $discn->join_date }}</td>
                     <td>{{ $discn->discussion }}</td>
                     <td>{{ $discn->reason }}</td>
-                    <td><a href="#"><i class="bi bi-eye"></i></a>&nbsp;<a href="{{ route('edit-discussion', $discn->disc_id) }}"><i class="bi bi-pencil"></i></a>&nbsp;<a href="#"><i class="bi bi-trash"></i></a></td>
+                    <td><a href="{{ route('show-discussion', $discn->disc_id) }}"><i class="bi bi-eye"></i></a>&nbsp;<a href="{{ route('edit-discussion', $discn->disc_id) }}"><i class="bi bi-pencil"></i></a>&nbsp;<a href="#"><i class="bi bi-trash"></i></a></td>
                 </tr>
                 @endforeach
             </tbody>
