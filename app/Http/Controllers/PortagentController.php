@@ -80,7 +80,8 @@ class PortagentController extends Controller
      */
     public function show($id)
     {
-        //
+        $result = Portagents::where('id', $id)->first();
+        return view('agent-profile', ['result' => $result]);
     }
 
     /**

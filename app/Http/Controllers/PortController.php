@@ -51,7 +51,8 @@ class PortController extends Controller
      */
     public function show($id)
     {
-        //
+        $result = Ports::where('id', $id)->first();
+        return view('port-profile', ['result' => $result]);
     }
 
     /**

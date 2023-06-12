@@ -79,7 +79,8 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+        $result = Company::where('company_id', $id)->first();
+        return view('company-profile', ['result' => $result]);
     }
 
     /**

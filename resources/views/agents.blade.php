@@ -25,7 +25,7 @@
                         <td>{{ $agent->c_person }}</td>
                         <td>{{ $agent->phone }}</td>
                         <td>{{ $agent->email }}</td>
-                        <td><a href="#"><i class="bi bi-eye"></i></a>&nbsp;<a href="{{ route('edit-agent', $agent->id) }}"><i class="bi bi-pencil"></i></a>&nbsp;<a href="{{ route('delete-agent', $agent->id) }}" onclick="return confirm('Are you sure you want to delete this agent?');"><i class="bi bi-trash"></i></a></td>
+                        <td><a href="{{ route('show-agent', $agent->id) }}"><i class="bi bi-eye"></i></a>&nbsp;<a href="{{ route('edit-agent', $agent->id) }}"><i class="bi bi-pencil"></i></a>&nbsp;<a href="{{ route('delete-agent', $agent->id) }}" onclick="return confirm('Are you sure you want to delete this agent?');"><i class="bi bi-trash"></i></a></td>
                     </tr>
                     @endforeach
                 </tbody>

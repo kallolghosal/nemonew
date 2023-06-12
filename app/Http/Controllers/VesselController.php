@@ -67,7 +67,8 @@ class VesselController extends Controller
      */
     public function show($id)
     {
-        //
+        $result = Vessel::where('id', $id)->first();
+        return view('vessel-profile', ['result' => $result]);
     }
 
     /**

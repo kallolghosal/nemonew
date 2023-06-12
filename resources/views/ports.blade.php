@@ -20,7 +20,7 @@
                     @foreach($ports as $port)
                     <tr>
                         <td>{{ $port->port }}</td>
-                        <td><a href="#"><i class="bi bi-eye"></i></a>&nbsp;<a href="{{ route('edit-port', $port->id )}}"><i class="bi bi-pencil"></i></a>&nbsp;<a href="{{ route('delete-port', $port->id )}}" onclick="return confirm('Are you sure you want to delete this port?');"><i class="bi bi-trash"></i></a></td>
+                        <td><a href="{{ route('show-port', $port->id) }}"><i class="bi bi-eye"></i></a>&nbsp;<a href="{{ route('edit-port', $port->id )}}"><i class="bi bi-pencil"></i></a>&nbsp;<a href="{{ route('delete-port', $port->id )}}" onclick="return confirm('Are you sure you want to delete this port?');"><i class="bi bi-trash"></i></a></td>
                     </tr>
                     @endforeach
                 </tbody>

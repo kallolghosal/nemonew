@@ -24,7 +24,7 @@
                     <td>{{ $company->contact_person }}</td>
                     <td>{{ $company->phone }}</td>
                     <td>{{ $company->email }}</td>
-                    <td><a href="#"><i class="bi bi-eye"></i></a>&nbsp;<a href="{{ route('edit-company', $company->company_id) }}"><i class="bi bi-pencil"></i></a>&nbsp;<a href="{{ route('delete-company', $company->company_id) }}" onclick="return confirm('Are you sure you want to delete this company?');"><i class="bi bi-trash"></i></a></td>
+                    <td><a href="{{ route('show-company', $company->company_id) }}"><i class="bi bi-eye"></i></a>&nbsp;<a href="{{ route('edit-company', $company->company_id) }}"><i class="bi bi-pencil"></i></a>&nbsp;<a href="{{ route('delete-company', $company->company_id) }}" onclick="return confirm('Are you sure you want to delete this company?');"><i class="bi bi-trash"></i></a></td>
                 </tr>
                 @endforeach
             </tbody>

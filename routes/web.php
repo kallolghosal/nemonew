@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('all-candidates', [CandidatesController::class, 'index'])->name('candidates');
 
     Route::get('company', [CompanyController::class, 'index'])->name('company');
+    Route::get('show-company/{id}', [CompanyController::class, 'show'])->name('show-company');
     Route::get('add-company', [CompanyController::class, 'create'])->name('add-company');
     Route::get('edit-company/{id}', [CompanyController::class, 'edit'])->name('edit-company');
     Route::post('store-company', [CompanyController::class, 'store'])->name('store-company');
@@ -48,6 +49,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('delete-company/{id}', [CompanyController::class, 'destroy'])->name('delete-company');
 
     Route::get('vessel', [VesselController::class, 'index'])->name('vessel');
+    Route::get('show-vessel/{id}', [VesselController::class, 'show'])->name('show-vessel');
     Route::get('add-vessel', [VesselController::class, 'create'])->name('add-vessel');
     Route::get('edit-vessel/{id}', [VesselController::class, 'edit'])->name('edit-vessel');
     Route::post('store-vessel', [VesselController::class, 'store'])->name('store-vessel');
@@ -55,6 +57,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('delete-vessel/{id}', [VesselController::class, 'destroy'])->name('delete-vessel');
 
     Route::get('ports', [PortController::class, 'index'])->name('ports');
+    Route::get('show-port/{id}', [PortController::class, 'show'])->name('show-port');
     Route::get('add-port', [PortController::class, 'create'])->name('add-port');
     Route::get('edit-port/{id}', [PortController::class, 'edit'])->name('edit-port');
     Route::post('store-port', [PortController::class, 'store'])->name('store-port');
@@ -62,6 +65,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('delete-port/{id}', [PortController::class, 'destroy'])->name('delete-port');
 
     Route::get('port-agents', [PortagentController::class, 'index'])->name('portagents');
+    Route::get('show-agent/{id}', [PortagentController::class, 'show'])->name('show-agent');
     Route::get('add-agent', [PortagentController::class, 'create'])->name('add-agent');
     Route::get('edit-agent/{id}', [PortagentController::class, 'edit'])->name('edit-agent');
     Route::post('store-agent', [PortagentController::class, 'store'])->name('store-agent');
@@ -69,6 +73,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('delete-agent/{id}', [PortagentController::class, 'destroy'])->name('delete-agent');
 
     Route::get('hospitals', [HospitalController::class, 'index'])->name('hospitals');
+    Route::get('show-hospital/{id}', [HospitalController::class, 'show'])->name('show-hospital');
     Route::get('add-hospital', [HospitalController::class, 'create'])->name('add-hospital');
     Route::get('edit-hospital/{id}', [HospitalController::class, 'edit'])->name('edit-hospital');
     Route::post('save-hospital', [HospitalController::class, 'store'])->name('save-hospital');
@@ -105,4 +110,5 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('birthdays', [HomeController::class, 'birthdays'])->name('birthdays');
     Route::post('search-candidate', [HomeController::class, 'searchCandidate'])->name('search-candidate');
+    Route::get('show-candidate/{id}', [HomeController::class, 'show'])->name('show-candidate');
 });

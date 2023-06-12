@@ -78,7 +78,8 @@ class HospitalController extends Controller
      */
     public function show($id)
     {
-        //
+        $result = Hospitals::where('id', $id)->first();
+        return view('hospital-profile', ['result' => $result]);
     }
 
     /**

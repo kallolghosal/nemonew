@@ -78,4 +78,14 @@ class HomeController extends Controller
         
     }
 
+    /**
+     * Shows detailed profile of a candidate
+     * 
+     * with link to edit the profile
+     */
+    public function show($id) {
+        $reslt = NemoUser::where('mem_id', $id)->first();
+        return view('candidate-profile', ['result' => $reslt]);
+    }
+
 }

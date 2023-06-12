@@ -21,7 +21,7 @@
                     <tr>
                         <td>{{ $vessel->vsl_name }}</td>
                         <td>{{ $vessel->company_name }}</td>
-                        <td><a href="#"><i class="bi bi-eye"></i></a>&nbsp;<a href="{{ route('edit-vessel', $vessel->id) }}"><i class="bi bi-pencil"></i></a>&nbsp;<a href="{{ route('delete-vessel', $vessel->id) }}" onclick="return confirm('Are you sure you want to delete this vessel?');"><i class="bi bi-trash"></i></a></td>
+                        <td><a href="{{ route('show-vessel', $vessel->id) }}"><i class="bi bi-eye"></i></a>&nbsp;<a href="{{ route('edit-vessel', $vessel->id) }}"><i class="bi bi-pencil"></i></a>&nbsp;<a href="{{ route('delete-vessel', $vessel->id) }}" onclick="return confirm('Are you sure you want to delete this vessel?');"><i class="bi bi-trash"></i></a></td>
                     </tr>
                     @endforeach
                 </tbody>
