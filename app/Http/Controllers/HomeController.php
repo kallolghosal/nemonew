@@ -89,4 +89,16 @@ class HomeController extends Controller
         return view('candidate-profile', ['result' => $reslt]);
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        NemoUser::where('mem_id', $id)->delete();
+        return \Redirect::route('candidates')->with(['message' => 'Candidate profile deleted successfully']);
+    }
+
 }

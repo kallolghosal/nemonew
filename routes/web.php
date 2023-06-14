@@ -38,7 +38,6 @@ Auth::routes([
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('list-users', [UserController::class, 'showUsers'])->name('all-users');
-    Route::get('all-candidates', [CandidatesController::class, 'index'])->name('candidates');
 
     Route::get('company', [CompanyController::class, 'index'])->name('company');
     Route::get('show-company/{id}', [CompanyController::class, 'show'])->name('show-company');
@@ -88,9 +87,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('update-grade', [GradeController::class, 'update'])->name('update-grade');
     Route::get('delete-grade/{id}', [GradeController::class, 'destroy'])->name('delete-grade');
     
-    Route::get('add-candidate', [CandidatesController::class, 'create'])->name('add-candidate');
-    Route::get('edit-candidate/{id}', [CandidatesController::class, 'edit'])->name('edit-candidate');
-    
     Route::get('bank-accounts', [BankAcController::class, 'index'])->name('bank-accounts');
     Route::get('show-bank/{id}', [BankAcController::class, 'show'])->name('show-bank');
     Route::get('edit-bank/{id}', [BankAcController::class, 'edit'])->name('edit-bank');
@@ -112,7 +108,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('add-discussion', [DiscussionController::class, 'create'])->name('add-discussion');
     Route::get('edit-discussion/{id}', [DiscussionController::class, 'edit'])->name('edit-discussion');
 
+    Route::get('all-candidates', [CandidatesController::class, 'index'])->name('candidates');
+    Route::get('add-candidate', [CandidatesController::class, 'create'])->name('add-candidate');
+    Route::get('edit-candidate/{id}', [CandidatesController::class, 'edit'])->name('edit-candidate');
     Route::get('birthdays', [HomeController::class, 'birthdays'])->name('birthdays');
     Route::post('search-candidate', [HomeController::class, 'searchCandidate'])->name('search-candidate');
     Route::get('show-candidate/{id}', [HomeController::class, 'show'])->name('show-candidate');
+    Route::get('delete-candidate/{id}', [HomeController::class, 'destroy'])->name('delete-candidate');
 });

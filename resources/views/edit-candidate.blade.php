@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <h2>Edit Candidate</h2>
-            {{ $candidate }}
+            <!-- {{ $candidate }} -->
             <p class="mt-4"></p>
             @foreach($candidate as $cand)
             <form action="#" method="post" enctype="multipart/form-data">

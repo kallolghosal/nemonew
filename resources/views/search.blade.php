@@ -26,7 +26,7 @@
                         <td>{{ $candidate->dob}}</td>
                         <td>{{ $candidate->p_rank }}</td>
                         <td>{{ $candidate->zone }}</td>
-                        <td><a href="{{ route('show-candidate', $candidate->mem_id) }}"><i class="bi bi-eye"></i></a>&nbsp;<a href="{{ route('edit-candidate', $candidate->mem_id) }}"><i class="bi bi-pencil"></i></a>&nbsp;<a href="#"><i class="bi bi-trash"></i></a></td>
+                        <td><a href="{{ route('show-candidate', $candidate->mem_id) }}"><i class="bi bi-eye"></i></a>&nbsp;<a href="{{ route('edit-candidate', $candidate->mem_id) }}"><i class="bi bi-pencil"></i></a>&nbsp;<a href="{{ route('delete-candidate', $candidate->mem_id) }}" onclick="return confirm('Are you sure you want to delete this Candidate?');"><i class="bi bi-trash"></i></a></td>
                     </tr>
                     @endforeach
                 </tbody>
