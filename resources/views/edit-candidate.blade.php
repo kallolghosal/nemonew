@@ -4,11 +4,12 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <h2>Edit Candidate</h2>
+            <h2 style="display:inline;">Edit Candidate</h2><a href="{{ route('candidates') }}" class="btn btn-primary btn-sm float-right">All Candidates</a>
             <!-- {{ $candidate }} -->
             <p class="mt-4"></p>
             @foreach($candidate as $cand)
             <form action="#" method="post" enctype="multipart/form-data">
+            @csrf
                 <div class="row">
                     <div class="col">
                         <label for="fname">First Name <span class="text-danger">*</span></label>

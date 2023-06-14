@@ -5,6 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <h2 style="display:inline">All Candidates</h2><a href="{{ route('add-candidate') }}" class="btn btn-primary btn-sm float-right">Add Candidate</a>
+            @if (session('message'))
+                <h6 class="text-success">{{ session('message') }}</h6>
+            @endif
             <table class="table table-striped mt-4">
                 <thead>
                     <tr>

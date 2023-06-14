@@ -44,7 +44,72 @@ class CandidatesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'fname' => 'required',
+            'lname' => 'required',
+            'rank' => 'required',
+            'dob' => 'required',
+            'country' => 'required',
+            'mob1' => 'required',
+            'email1' => 'required'
+        ],[
+            'fname.required' => 'Please enter your first name',
+            'lname.required' => 'Please enter your last name',
+            'rank.required' => 'Please enter your rank',
+            'dob.required' => 'Please enter your Date of Birth',
+            'country.required' => 'Please enter your nationality',
+            'mob1.required' => 'Please enter your mobile no',
+            'email1.required' => 'Please enter your email'
+        ]);
+
+        $candidate = new NemoUser;
+
+        $candidate->fname = $request->fname;
+        $candidate->lname = $request->lname;
+        $candidate->p_rank = $request->rank;
+        $candidate->dob = $request->dob;
+        $candidate->birth_place = $request->pob;
+        $candidate->work_nautilus = $request->workwithus;
+        $candidate->grade = $request->grade;
+        $candidate->boiler_suit_size = $request->bsuit;
+        $candidate->safety_shoe_size = $request->sfshoe;
+        $candidate->abv_date = $request->aval;
+        $candidate->nationalty = $request->country;
+        $candidate->m_status = $request->mstatus;
+        $candidate->c_vessel = $request->vsltype;
+        $candidate->experience = $request->expr;
+        $candidate->zone = $request->zone;
+        $candidate->height = $request->height;
+        $candidate->weight = $request->weight;
+        $candidate->l_country = $request->licsconr;
+        $candidate->indos_number = $request->indos;
+        $candidate->resume = $request->resume;
+        $candidate->photos = $request->photos;
+        $candidate->p_ad1 = $request->addr1;
+        $candidate->p_city = $request->city1;
+        $candidate->p_state = $request->state1;
+        $candidate->p_pin = $request->pin1;
+        $candidate->c_ad1 = $request->addr2;
+        $candidate->c_city = $request->city2;
+        $candidate->c_state = $request->state2;
+        $candidate->c_pin = $request->pin2;
+        $candidate->mobile_code2 = $request->ext1;
+        $candidate->p_mobi1 = $request->mob1;
+        $candidate->mobile_code1 = $request->ext2;
+        $candidate->c_mobi1 = $request->mob2;
+        $candidate->other_mobile_code = $request->ext3;
+        $candidate->other_numbers = $request->mob3;
+        $candidate->area_code2 = $request->lextn;
+        $candidate->p_tel1 = $request->landph;
+        $candidate->email1 = $request->email1;
+        $candidate->email2 = $request->email2;
+        $candidate->active_details = $request->status;
+        $candidate->category = $request->group;
+        $candidate->vendor_id = $request->vendor;
+
+        $candidate->save();
+
+        return \Redirect::route('candidates')->with(['message' => 'Candidate added successfully']);
     }
 
     /**

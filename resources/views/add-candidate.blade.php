@@ -4,24 +4,26 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <h4>Add Candidate</h4>
-            <form action="#" method="post" enctype="multipart/form-data">
+            <h4 style="display:inline;">Add Candidate</h4><a href="{{ route('candidates') }}" class="btn btn-primary btn-sm float-right">All Candidates</a>
+            <p class="mt-4"></p>
+            <form action="{{ route('store-candidate') }}" method="post" enctype="multipart/form-data">
+            @csrf
                 <div class="row">
                     <div class="col">
                         <label for="fname">First Name <span class="text-danger">*</span></label>
-                        <input type="text" name="fname" id="" class="form-control">
+                        <input type="text" name="fname" id="" class="form-control" required>
                     </div>
                     <div class="col">
                         <label for="lname">Last Name <span class="text-danger">*</span></label>
-                        <input type="text" name="lname" id="" class="form-control">
+                        <input type="text" name="lname" id="" class="form-control" required>
                     </div>
                     <div class="col">
                         <label for="rank">Rank <span class="text-danger">*</span></label>    
-                        <input type="text" name="rank" id="" class="form-control">
+                        <input type="text" name="rank" id="" class="form-control" required>
                     </div>
                     <div class="col">
                         <label for="dob">Date of Birth <span class="text-danger">*</span></label>
-                        <input type="date" name="dob" id="dob" class="form-control">
+                        <input type="date" name="dob" id="dob" class="form-control" required>
                     </div>
                 </div>
                 <div class="row mt-4">
@@ -61,8 +63,8 @@
                         <input type="date" name="aval" class="form-control">
                     </div>
                     <div class="col">
-                        <label for="country">Nationality</label>
-                        <select name="country" id="" class="form-control">
+                        <label for="country">Nationality <span class="text-danger">*</span></label>
+                        <select name="country" id="" class="form-control" required>
                             <option value="">Select Country</option>
                             @foreach ($countries as $country)
                             <option value="{{ $country->id }}">{{ $country->country }}</option>
@@ -151,19 +153,19 @@
                 <div class="row mt-4">
                     <div class="col">
                         <label for="prntaddr">Address</label>
-                        <textarea name="prntaddr" id="prntaddr" cols="30" rows="4" class="form-control"></textarea>
+                        <textarea name="addr1" id="prntaddr" cols="30" rows="4" class="form-control"></textarea>
                     </div>
                     <div class="col">
                         <label for="city">City</label>
-                        <input type="text" name="city" id="city" class="form-control">
+                        <input type="text" name="city1" id="city" class="form-control">
                     </div>
                     <div class="col">
                         <label for="state">State</label>
-                        <input type="text" name="state" id="state" class="form-control">
+                        <input type="text" name="state1" id="state" class="form-control">
                     </div>
                     <div class="col">
                         <label for="pin">PIN</label>
-                        <input type="text" name="pin" id="pin" class="form-control">
+                        <input type="text" name="pin1" id="pin" class="form-control">
                     </div>
                 </div>
                 <hr>
@@ -171,24 +173,24 @@
                 <div class="row mt-4">
                     <div class="col">
                         <label for="prntaddr">Address</label>
-                        <textarea name="prntaddr" id="prntaddr" cols="30" rows="4" class="form-control"></textarea>
+                        <textarea name="addr2" id="prntaddr" cols="30" rows="4" class="form-control"></textarea>
                     </div>
                     <div class="col">
                         <label for="city">City</label>
-                        <input type="text" name="city" id="city" class="form-control">
+                        <input type="text" name="city2" id="city" class="form-control">
                     </div>
                     <div class="col">
                         <label for="state">State</label>
-                        <input type="text" name="state" id="state" class="form-control">
+                        <input type="text" name="state2" id="state" class="form-control">
                     </div>
                     <div class="col">
                         <label for="pin">PIN</label>
-                        <input type="text" name="pin" id="pin" class="form-control">
+                        <input type="text" name="pin2" id="pin" class="form-control">
                     </div>
                 </div>
                 <div class="row mt-4">
                     <div class="col">
-                        <label for="mob1">1st Mobile</label>
+                        <label for="mob1">1st Mobile <span class="text-danger">*</span></label>
                         <div class="row">
                             <div class="col-md-3">
                                 <select name="ext1" id="" class="form-control">
@@ -199,7 +201,7 @@
                                 </select>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" name="mob1" class="form-control" id="">
+                                <input type="text" name="mob1" class="form-control" id="" required>
                             </div>
                         </div>
                     </div>
@@ -249,8 +251,8 @@
                         </div>
                     </div>
                     <div class="col">
-                        <label for="email1">1st Email</label>
-                        <input type="email" name="email1" class="form-control" id="">
+                        <label for="email1">1st Email <span class="text-danger">*</span></label>
+                        <input type="email" name="email1" class="form-control" id="" required>
                     </div>
                     <div class="col">
                         <label for="email2">2nd Email</label>

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class NemoUser extends Model
 {
     protected $table = 'seed1';
+    public $timestamps = false;
     protected $fillable = [
         'p_rank',
         'avb_date',

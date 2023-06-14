@@ -36,6 +36,7 @@ Auth::routes([
 ]);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('list-users', [UserController::class, 'showUsers'])->name('all-users');
 
@@ -110,6 +111,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('all-candidates', [CandidatesController::class, 'index'])->name('candidates');
     Route::get('add-candidate', [CandidatesController::class, 'create'])->name('add-candidate');
+    Route::post('store-candidate', [CandidatesController::class, 'store'])->name('store-candidate');
     Route::get('edit-candidate/{id}', [CandidatesController::class, 'edit'])->name('edit-candidate');
     Route::get('birthdays', [HomeController::class, 'birthdays'])->name('birthdays');
     Route::post('search-candidate', [HomeController::class, 'searchCandidate'])->name('search-candidate');
