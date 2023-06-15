@@ -113,6 +113,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('add-candidate', [CandidatesController::class, 'create'])->name('add-candidate');
     Route::post('store-candidate', [CandidatesController::class, 'store'])->name('store-candidate');
     Route::get('edit-candidate/{id}', [CandidatesController::class, 'edit'])->name('edit-candidate');
+    Route::post('update-candidate', [CandidatesController::class, 'update'])->name('update-candidate');
     Route::get('birthdays', [HomeController::class, 'birthdays'])->name('birthdays');
     Route::post('search-candidate', [HomeController::class, 'searchCandidate'])->name('search-candidate');
     Route::get('show-candidate/{id}', [HomeController::class, 'show'])->name('show-candidate');

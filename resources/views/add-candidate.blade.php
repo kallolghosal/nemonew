@@ -264,26 +264,26 @@
                         <label for="status">Status</label>
                         <select name="status" id="" class="form-control">
                             <option value="">Select Status</option>
-                            <option value="y">Active</option>
-                            <option value="n">Inactive</option>
+                            <option value="1">Active</option>
+                            <option value="0">Inactive</option>
                         </select>
                     </div>
                     <div class="col">
                         <label for="group">Group</label>
                         <select name="group" id="" class="form-control">
                             <option value="">Select Group</option>
-                            <option value="officer">Officer</option>
-                            <option value="rating">Rating</option>
-                            <option value="ivcrew">IV Crew</option>
+                            <option value="1">Officer</option>
+                            <option value="2">Rating</option>
+                            <option value="3">IV Crew</option>
                         </select>
                     </div>
                     <div class="col">
                         <label for="vendor">Vendor</label>
                         <select name="vendor" id="" class="form-control">
                             <option value="">Select Vendor</option>
-                            <option value="copper">Copper Marine &amp; Offshore Limited</option>
-                            <option value="alpha">Alpha Marine Services</option>
-                            <option value="manila">Manila Shipmanagement &amp; Manning Inc.</option>
+                            <option value="1">Copper Marine &amp; Offshore Limited</option>
+                            <option value="2">Alpha Marine Services</option>
+                            <option value="3">Manila Shipmanagement &amp; Manning Inc.</option>
                         </select>
                     </div>
                 </div>

@@ -6,9 +6,12 @@
         <div class="col-md-12">
             <h2 style="display:inline;">Edit Candidate</h2><a href="{{ route('candidates') }}" class="btn btn-primary btn-sm float-right">All Candidates</a>
             <!-- {{ $candidate }} -->
+            @if (session('message'))
+                <h6 class="text-success">{{ session('message') }}</h6>
+            @endif
             <p class="mt-4"></p>
             @foreach($candidate as $cand)
-            <form action="#" method="post" enctype="multipart/form-data">
+            <form action="{{ route('update-candidate') }}" method="post" enctype="multipart/form-data">
             @csrf
                 <div class="row">
                     <div class="col">
@@ -21,7 +24,7 @@
                     </div>
                     <div class="col">
                         <label for="rank">Rank <span class="text-danger">*</span></label>    
-                        <input type="text" name="rank" value="{{ $cand->c_rank }}" id="" class="form-control">
+                        <input type="text" name="rank" value="{{ $cand->p_rank }}" id="" class="form-control">
                     </div>
                     <div class="col">
                         <label for="dob">Date of Birth <span class="text-danger">*</span></label>
@@ -37,7 +40,7 @@
                         <label for="workwithus">Worked with Us</label>    
                         <select name="workwithus" class="form-control" id="">
                             <option value="">Select</option>
-                            <option value="Yes" @php if($cand->work_nautilus === 'Yes') echo 'selected' @endphp>Yes</option>
+                            <option value="y" @php if($cand->work_nautilus === 'y') echo 'selected' @endphp>Yes</option>
                             <option value="No" @php if($cand->work_nautilus === 'No') echo 'selected' @endphp>No</option>
                         </select>
                     </div>
@@ -90,7 +93,7 @@
                         <select name="vsltype" id="" class="form-control">
                             <option value="">Select Vessel Type</option>
                             @foreach($vsltypes as $vsltype)
-                            <option value="{{ $vsltype->vessel }}">{{ $vsltype->vessel }}</option>
+                            <option value="{{ $vsltype->vessel }}" @php if($vsltype->vessel === $cand->c_vessel) echo 'selected' @endphp>{{ $vsltype->vessel }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -98,20 +101,20 @@
                         <label for="expr">Experience</label>    
                         <select name="expr" id="" class="form-control">
                             <option value="">Select Experience</option>
-                            <option value="< 6 Months" @php if($cand->experience === '< 6 Months') echo 'selected' @endphp>< 6 Months</option>
-                            <option value="6-12 Months" @php if($cand->experience === '6-12 Months') echo 'selected' @endphp>6-12 Months</option>
-                            <option value="12-24 Months" @php if($cand->experience === '12-24 Months') echo 'selected' @endphp>12-24 Months</option>
-                            <option value="> 24 Months" @php if($cand->experience === '> 24 Months') echo 'selected' @endphp> > 24 Months</option>
+                            <option value="< 6 months" @php if($cand->experience === '< 6 months') echo 'selected' @endphp>< 6 Months</option>
+                            <option value="6-12 months" @php if($cand->experience === '6-12 months') echo 'selected' @endphp>6-12 Months</option>
+                            <option value="12-24 months" @php if($cand->experience === '12-24 months') echo 'selected' @endphp>12-24 Months</option>
+                            <option value="> 24 months" @php if($cand->experience === '> 24 months') echo 'selected' @endphp> > 24 Months</option>
                         </select>
                     </div>
                     <div class="col">
                         <label for="zone">Zone</label>
                         <select name="zone" id="" class="form-control">
                             <option value="">Select Zone</option>
-                            <option value="north" @php if($cand->zone === 'NORTH') echo 'selected' @endphp>North</option>
-                            <option value="east" @php if($cand->zone === 'EAST') echo 'selected' @endphp>East</option>
-                            <option value="south" @php if($cand->zone === 'SOUTH') echo 'selected' @endphp>South</option>
-                            <option value="west" @php if($cand->zone === 'WEST') echo 'selected' @endphp>West</option>
+                            <option value="north" @php if($cand->zone === 'north') echo 'selected' @endphp>North</option>
+                            <option value="east" @php if($cand->zone === 'east') echo 'selected' @endphp>East</option>
+                            <option value="south" @php if($cand->zone === 'south') echo 'selected' @endphp>South</option>
+                            <option value="west" @php if($cand->zone === 'west') echo 'selected' @endphp>West</option>
                         </select>
                     </div>
                     <div class="col">
@@ -155,19 +158,19 @@
                 <div class="row mt-4">
                     <div class="col">
                         <label for="prntaddr">Address</label>
-                        <textarea name="prntaddr" id="prntaddr" cols="30" rows="4" class="form-control"></textarea>
+                        <textarea name="addr1" id="prntaddr" cols="30" rows="4" class="form-control">{{ $cand->p_ad1 }}</textarea>
                     </div>
                     <div class="col">
                         <label for="city">City</label>
-                        <input type="text" name="city" id="city" class="form-control">
+                        <input type="text" name="city1" id="city" value="{{ $cand->p_city }}" class="form-control">
                     </div>
                     <div class="col">
                         <label for="state">State</label>
-                        <input type="text" name="state" id="state" class="form-control">
+                        <input type="text" name="state1" id="state" value="{{ $cand->p_state }}" class="form-control">
                     </div>
                     <div class="col">
                         <label for="pin">PIN</label>
-                        <input type="text" name="pin" id="pin" class="form-control">
+                        <input type="text" name="pin1" id="pin" value="{{ $cand->p_pin }}" class="form-control">
                     </div>
                 </div>
                 <hr>
@@ -175,19 +178,19 @@
                 <div class="row mt-4">
                     <div class="col">
                         <label for="prntaddr">Address</label>
-                        <textarea name="caddr" id="prntaddr" cols="30" rows="4" class="form-control">{{ $cand->c_ad1 }}</textarea>
+                        <textarea name="addr2" id="prntaddr" cols="30" rows="4" class="form-control">{{ $cand->c_ad1 }}</textarea>
                     </div>
                     <div class="col">
                         <label for="city">City</label>
-                        <input type="text" name="c_city" value="{{ $cand->c_city }}" id="city" class="form-control">
+                        <input type="text" name="city2" value="{{ $cand->c_city }}" id="city" class="form-control">
                     </div>
                     <div class="col">
                         <label for="state">State</label>
-                        <input type="text" name="c_state" value="{{ $cand->c_state }}" id="state" class="form-control">
+                        <input type="text" name="state2" value="{{ $cand->c_state }}" id="state" class="form-control">
                     </div>
                     <div class="col">
                         <label for="pin">PIN</label>
-                        <input type="text" name="c_pin" value="{{ $cand->c_pin }}" id="pin" class="form-control">
+                        <input type="text" name="pin2" value="{{ $cand->c_pin }}" id="pin" class="form-control">
                     </div>
                 </div>
                 <div class="row mt-4">
@@ -274,19 +277,20 @@
                         <label for="group">Group</label>
                         <select name="group" id="" class="form-control">
                             <option value="">Select Group</option>
-                            <option value="officer">Officer</option>
-                            <option value="rating">Rating</option>
-                            <option value="ivcrew">IV Crew</option>
+                            <option value="1" @php if($cand->category === 1) echo 'selected' @endphp>Officer</option>
+                            <option value="2" @php if($cand->category === 2) echo 'selected' @endphp>Rating</option>
+                            <option value="3" @php if($cand->category === 3) echo 'selected' @endphp>IV Crew</option>
                         </select>
                     </div>
                     <div class="col">
                         <label for="vendor">Vendor</label>
                         <select name="vendor" id="" class="form-control">
                             <option value="">Select Vendor</option>
-                            <option value="copper">Copper Marine &amp; Offshore Limited</option>
-                            <option value="alpha">Alpha Marine Services</option>
-                            <option value="manila">Manila Shipmanagement &amp; Manning Inc.</option>
+                            <option value="0" @php if($cand->vendor_id === 0) echo 'selected' @endphp>Copper Marine &amp; Offshore Limited</option>
+                            <option value="1" @php if($cand->vendor_id === 1) echo 'selected' @endphp>Alpha Marine Services</option>
+                            <option value="2" @php if($cand->vendor_id === 2) echo 'selected' @endphp>Manila Shipmanagement &amp; Manning Inc.</option>
                         </select>
+                        <input type="hidden" name="memid" value="{{ $cand->mem_id }}">
                     </div>
                 </div>
                 <p class="mb-4"></p>
