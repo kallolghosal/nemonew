@@ -140,11 +140,11 @@
                 <div class="row mt-4">
                     <div class="col">
                         <label for="resume">Resume</label>
-                        <input type="file" class="form-control" id="resume" aria-describedby="inputGroupFileAddon04" name="resume" aria-label="Upload">
+                        <input type="file" class="form-control" id="resume" name="resume">
                     </div>
                     <div class="col">
                         <label for="photos">Photos</label>
-                        <input type="file" class="form-control" id="phptos" aria-describedby="inputGroupFileAddon05" name="photos" aria-label="Upload">
+                        <input type="file" class="form-control" id="photos" name="photos">
                     </div>
                     <div class="col"></div>
                 </div>

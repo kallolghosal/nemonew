@@ -145,11 +145,13 @@
                 <div class="row mt-4">
                     <div class="col">
                         <label for="resume">Resume</label>
-                        <input type="file" class="form-control" id="resume" aria-describedby="inputGroupFileAddon04" name="resume" aria-label="Upload">
+                        <input type="file" class="form-control" id="resume" name="resume" aria-label="Upload">
+                        <img src="{{ asset('img/resume/'.$cand->resume) }}" alt="">
                     </div>
                     <div class="col">
                         <label for="photos">Photos</label>
-                        <input type="file" class="form-control" id="phptos" aria-describedby="inputGroupFileAddon05" name="photos" aria-label="Upload">
+                        <input type="file" class="form-control" id="phptos" name="photos" aria-label="Upload">
+                        <img src="{{ asset('img/photos/'.$cand->photos) }}" alt="" height="120px">
                     </div>
                     <div class="col"></div>
                 </div>

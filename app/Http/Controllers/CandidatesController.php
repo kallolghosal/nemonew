@@ -51,7 +51,9 @@ class CandidatesController extends Controller
             'dob' => 'required',
             'country' => 'required',
             'mob1' => 'required',
-            'email1' => 'required'
+            'email1' => 'required',
+            'resume' => 'required|mimes:pdf|max:5000',
+            'photos' => 'required|mimes:jpg,jpeg,png|max:5000'
         ],[
             'fname.required' => 'Please enter your first name',
             'lname.required' => 'Please enter your last name',
@@ -59,8 +61,17 @@ class CandidatesController extends Controller
             'dob.required' => 'Please enter your Date of Birth',
             'country.required' => 'Please enter your nationality',
             'mob1.required' => 'Please enter your mobile no',
-            'email1.required' => 'Please enter your email'
+            'email1.required' => 'Please enter your email',
+            'resume.required' => 'Please upload your resume',
+            'photos.required' => 'Please upload photo'
         ]);
+
+        $resumepath = $request->file('resume')->store('public/img/resume');
+        $photopath = $request->file('photos')->store('public/img/photos');
+        $resumename = $request->file('resume')->getClientOriginalName();
+        $photosname = $request->file('photos')->getClientOriginalName();
+        $request->file('resume')->move(public_path('img/resume'), $resumename);
+        $request->file('photos')->move(public_path('img/photos'), $photosname);
 
         $candidate = new NemoUser;
 
@@ -83,8 +94,8 @@ class CandidatesController extends Controller
         $candidate->weight = $request->weight;
         $candidate->l_country = $request->licsconr;
         $candidate->indos_number = $request->indos;
-        $candidate->resume = $request->resume;
-        $candidate->photos = $request->photos;
+        $candidate->resume = $resumename;
+        $candidate->photos = $photosname;
         $candidate->p_ad1 = $request->addr1;
         $candidate->p_city = $request->city1;
         $candidate->p_state = $request->state1;
@@ -188,8 +199,8 @@ class CandidatesController extends Controller
             'weight' => $request->weight,
             'l_country' => $request->licsconr,
             'indos_number' => $request->indos,
-            'resume' => $request->resume,
-            'photos' => $request->photos,
+            'resume' => $request->file('resume')->getClientOriginalName(),
+            'photos' => $request->file('photos')->getClientOriginalName(),
             'p_ad1' => $request->addr1,
             'p_city' => $request->city1,
             'p_state' => $request->state1,
