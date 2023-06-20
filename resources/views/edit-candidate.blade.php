@@ -219,7 +219,7 @@
                                 <select name="ext2" id="" class="form-control">
                                     <option value="">Extn</option>
                                     @foreach($ccodes as $ccode)
-                                    <option value="{{ $ccode->phone }}" @php if($cand->mobile_code2 === $ccode->phone) echo 'selected' @endphp>{{ $ccode->phone }}</option>
+                                    <option value="{{ $ccode->phone }}" @php if($cand->mobile_code2 == $ccode->phone) echo 'selected' @endphp>{{ $ccode->phone }}</option>
                                     @endforeach
                                 </select>
                             </div>
