@@ -7,14 +7,14 @@
         @if (session('message'))
             <h6 class="text-success">{{ session('message') }}</h6>
         @endif
-        <table class="table table-bordered" width="100%" cellspacing="0">
+        <table class="table table-striped mt-4">
             <thead>
                 <tr>
                     <td>Company Name</td>
                     <td>Contact Person</td>
                     <td>Phone</td>
                     <td>Email</td>
-                    <td width=60>Edit</td>
+                    <td>Edit</td>
                 </tr>
             </thead>
             <tbody>

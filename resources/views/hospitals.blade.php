@@ -15,7 +15,6 @@
                         <td>Doctor</td>
                         <td>City</td>
                         <td>Phone</td>
-                        <td>Email</td>
                         <td>Edit</td>
                     </tr>
                 </thead>
@@ -26,7 +25,6 @@
                         <td>{{ $hospital->doctor_name }}</td>
                         <td>{{ $hospital->city }}</td>
                         <td>{{ $hospital->phone }}</td>
-                        <td>{{ $hospital->email }}</td>
                         <td><a href="{{ route('show-hospital', $hospital->id) }}"><i class="bi bi-eye"></i></a>&nbsp;<a href="{{ route('edit-hospital', $hospital->id) }}"><i class="bi bi-pencil"></i></a>&nbsp;<a href="{{ route('delete-hospital', $hospital->id) }}" onclick="return confirm('Are you sure you want to delete this hospital?');"><i class="bi bi-trash"></i></a></td>
                     </tr>
                     @endforeach

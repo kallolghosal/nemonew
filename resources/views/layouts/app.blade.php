@@ -69,6 +69,7 @@
                         <a class="collapse-item" href="{{ route('candidates') }}">All Candidates</a>
                         <a class="collapse-item" href="{{ route('add-candidate') }}">Add Candidate</a>
                         <a class="collapse-item" href="{{ route('bank-accounts') }}">Bank Accounts</a>
+                        <a class="collapse-item" href="{{ route('crew-planner') }}">Crew Planner</a>
                     </div>
                 </div>
             </li>

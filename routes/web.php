@@ -13,6 +13,7 @@ use App\Http\Controllers\BankAcController;
 use App\Http\Controllers\RankController;
 use App\Http\Controllers\DiscussionController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CrewPlannerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -118,4 +119,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('search-candidate', [HomeController::class, 'searchCandidate'])->name('search-candidate');
     Route::get('show-candidate/{id}', [HomeController::class, 'show'])->name('show-candidate');
     Route::get('delete-candidate/{id}', [HomeController::class, 'destroy'])->name('delete-candidate');
+
+    Route::get('crew-planner', [CrewPlannerController::class, 'index'])->name('crew-planner');
+    Route::get('show-planner/{id}', [CrewPlannerController::class, 'show'])->name('show-planner');
+    Route::get('add-planner', [CrewPlannerController::class, 'create'])->name('add-planner');
+    Route::post('store-planner', [CrewPlannerController::class, 'store'])->name('store-planner');
+    Route::get('edit-planner/{id}', [CrewPlannerController::class, 'edit'])->name('edit-planner');
+    Route::post('update-planner', [CrewPlannerController::class, 'update'])->name('update-planner');
+    Route::get('delete-planner/{id}', [CrewPlannerController::class, 'destroy'])->name('delete-planner');
 });

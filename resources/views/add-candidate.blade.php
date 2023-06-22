@@ -106,10 +106,10 @@
                         <label for="zone">Zone</label>
                         <select name="zone" id="" class="form-control">
                             <option value="">Select Zone</option>
-                            <option value="north">North</option>
-                            <option value="east">East</option>
-                            <option value="south">South</option>
-                            <option value="west">West</option>
+                            <option value="NORTH">North</option>
+                            <option value="EAST">East</option>
+                            <option value="SOUTH">South</option>
+                            <option value="WEST">West</option>
                         </select>
                     </div>
                     <div class="col">

@@ -111,10 +111,10 @@
                         <label for="zone">Zone</label>
                         <select name="zone" id="" class="form-control">
                             <option value="">Select Zone</option>
-                            <option value="north" @php if($cand->zone === 'north') echo 'selected' @endphp>North</option>
-                            <option value="east" @php if($cand->zone === 'east') echo 'selected' @endphp>East</option>
-                            <option value="south" @php if($cand->zone === 'south') echo 'selected' @endphp>South</option>
-                            <option value="west" @php if($cand->zone === 'west') echo 'selected' @endphp>West</option>
+                            <option value="NORTH" @php if($cand->zone === 'NORTH') echo 'selected' @endphp>North</option>
+                            <option value="EAST" @php if($cand->zone === 'EAST') echo 'selected' @endphp>East</option>
+                            <option value="SOUTH" @php if($cand->zone === 'SOUTH') echo 'selected' @endphp>South</option>
+                            <option value="WEST" @php if($cand->zone === 'WEST') echo 'selected' @endphp>West</option>
                         </select>
                     </div>
                     <div class="col">
