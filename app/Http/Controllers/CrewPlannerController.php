@@ -46,7 +46,42 @@ class CrewPlannerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'rank' => 'required',
+            'company' => 'required',
+            'vsltype' => 'required',
+            'vslname' => 'required',
+            'coc' => 'required',
+            'status' => 'required'
+        ],[
+            'rank.required' => 'Please select rank',
+            'company.required' => 'Please select company',
+            'vsltype.required' => 'Please select vessel type',
+            'vslname.required' => 'Please select vessel name',
+            'coc.required' => 'Please select a country',
+            'status.required' => 'Please select status'
+        ]);
+
+        $crewpl = new CrewPlanner;
+
+        $crewpl->rank = $request->rank;
+        $crewpl->client = $request->company;
+        $crewpl->vessel = $request->vsltype;
+        $crewpl->vslname = $request->vslname;
+        $crewpl->coc_accepted = implode(',',$request->coc);
+        $crewpl->trading = $request->trading;
+        $crewpl->wages = $request->wages;
+        $crewpl->doj = $request->doj;
+        $crewpl->immediate = $request->dojnow ? 1 : 0;
+        $crewpl->other_info = $request->other;
+        $crewpl->status = $request->status;
+        $crewpl->created_by = 1;
+        $crewpl->updated_by = 1;
+        $crewpl->created_date = date('Y-m-d');
+
+        $crewpl->save();
+
+        return \Redirect::route('crew-planner')->with(['message' => 'New plan added successfully']);
     }
 
     /**
@@ -85,9 +120,42 @@ class CrewPlannerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'rank' => 'required',
+            'company' => 'required',
+            'vsltype' => 'required',
+            'vslname' => 'required',
+            'coc' => 'required',
+            'status' => 'required'
+        ],[
+            'rank.required' => 'Please select rank',
+            'company.required' => 'Please select company',
+            'vsltype.required' => 'Please select vessel type',
+            'vslname.required' => 'Please select vessel name',
+            'coc.required' => 'Please select a country',
+            'status.required' => 'Please select status'
+        ]);
+
+        CrewPlanner::where('entry_id', $request->entryid)->update([
+            'rank' => $request->rank,
+            'client' => $request->company,
+            'vessel' => $request->vsltype,
+            'vslname' => $request->vslname,
+            'coc_accepted' => implode(',',$request->coc),
+            'trading' => $request->trading,
+            'wages' => $request->wages,
+            'doj' => $request->doj,
+            'immediate' => $request->dojnow ? 1 : 0,
+            'other_info' => $request->other,
+            'status' => $request->status,
+            'created_by' => 1,
+            'updated_by' => 1,
+            'created_date' => date('Y-m-d')
+        ]);
+
+        return \Redirect::route('edit-planner', $request->entryid)->with(['message' => 'Planner updated successfully']);
     }
 
     /**
@@ -98,6 +166,7 @@ class CrewPlannerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        CrewPlanner::where('entry_id', $id)->delete();
+        return \Redirect::route('crew-planner')->with(['message' => 'Plan deleted successfully']);
     }
 }

@@ -15,6 +15,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <p class="mt-4"></p>
+            <a href="{{ route('crew-planner') }}" class="btn btn-primary btn-sm">View All Plans</a>
+            <p class="mt-4"></p>
         </div>
     </div>
 </div>

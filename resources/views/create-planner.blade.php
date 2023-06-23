@@ -11,34 +11,43 @@
             @csrf
                 <div class="row">
                     <div class="col">
-                        <label for="company">Rank</label>
+                        <label for="rank">Rank</label>
                         <select name="rank" id="" class="form-control">
                             <option value="">Select Rank</option>
                             @foreach($ranks as $rank)
                             <option value="{{ $rank->rank }}">{{ $rank->rank }}</option>
                             @endforeach
                         </select>
+                        @error('rank')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col">
-                        <label for="contact">Client</label>
+                        <label for="company">Client</label>
                         <select name="company" id="" class="form-control">
                             <option value="">Select Company</option>
                             @foreach($comps as $comp)
                             <option value="{{ $comp->company_id }}">{{ $comp->company_name }}</option>
                             @endforeach
                         </select>
+                        @error('company')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <p class="mt-4"></p>
                 <div class="row">
                     <div class="col">
-                        <label for="company">Vessel Type</label>
+                        <label for="vsltype">Vessel Type</label>
                         <select name="vsltype" id="" class="form-control">
                             <option value="">Select Vessel Type</option>
                             @foreach($vsltype as $vtype)
                             <option value="{{ $vtype->vessel }}">{{ $vtype->vessel }}</option>
                             @endforeach
                         </select>
+                        @error('vsltype')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col">
                         <label for="contact">Vessel Name</label>
@@ -48,6 +57,9 @@
                             <option value="{{ $vname->id }}">{{ $vname->vsl_name }}</option>
                             @endforeach
                         </select>
+                        @error('vslname')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 
@@ -60,6 +72,9 @@
                             <option value="{{ $country->id }}">{{ $country->country }}</option>
                             @endforeach
                         </select>
+                        @error('coc')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col">
                         <label for="trading">Trading</label>
@@ -73,8 +88,12 @@
                         <input type="text" name="wages" class="form-control">
                     </div>
                     <div class="col">
-                        <label for="owner">DOJ</label>
+                        <label for="doj">DOJ</label>
                         <input type="date" name="doj" id="" class="form-control">
+                    </div>
+                    <div class="col">
+                        <label for="dojnow">Or Immediate</label>
+                        <input type="checkbox" name="dojnow" id="" class="form-check" value="1">
                     </div>
                 </div>
                 <p class="mt-4"></p>
@@ -86,11 +105,14 @@
                     <div class="col">
                         <label for="status">Status</label>
                         <select name="status" id="" class="form-control">
-                            <option value="1">Position Open</option>
-                            <option value="2">Position Hold</option>
-                            <option value="3">Closed By NS</option>
-                            <option value="4">Closed By Client</option>
+                            <option value="POSITION OPEN">Position Open</option>
+                            <option value="POSITION HOLD">Position Hold</option>
+                            <option value="CLOSED BY NS">Closed By NS</option>
+                            <option value="CLOSED BY CLIENT">Closed By Client</option>
                         </select>
+                        @error('status')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <p class="mt-4"></p>
