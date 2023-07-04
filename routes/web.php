@@ -14,6 +14,7 @@ use App\Http\Controllers\RankController;
 use App\Http\Controllers\DiscussionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CrewPlannerController;
+use App\Http\Controllers\ContractController;
 
 /*
 |--------------------------------------------------------------------------
@@ -119,6 +120,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('search-candidate', [HomeController::class, 'searchCandidate'])->name('search-candidate');
     Route::get('show-candidate/{id}', [HomeController::class, 'show'])->name('show-candidate');
     Route::get('delete-candidate/{id}', [HomeController::class, 'destroy'])->name('delete-candidate');
+
+    Route::get('contracts', [ContractController::class, 'index'])->name('contracts');
+    Route::get('show-contract/{id}', [ContractController::class, 'show'])->name('show-contract');
+    Route::get('add-contract', [ContractController::class, 'create'])->name('add-contract');
+    Route::get('edit-contract/{id}', [ContractController::class, 'edit'])->name('edit-contract');
+    Route::get('delete-contract/{id}', [ContractController::class, 'destroy'])->name('delete-contract');
 
     Route::get('crew-planner', [CrewPlannerController::class, 'index'])->name('crew-planner');
     Route::get('show-planner/{id}', [CrewPlannerController::class, 'show'])->name('show-planner');

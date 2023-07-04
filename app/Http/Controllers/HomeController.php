@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\NemoUser;
 use App\Models\Company;
+use App\Models\Contract;
+use App\Models\Ranks;
+use App\Models\Vessel;
+use App\Models\VslType;
+use App\Models\Ports;
+use App\Models\BankAcs;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -86,7 +92,23 @@ class HomeController extends Controller
      */
     public function show($id) {
         $reslt = NemoUser::where('mem_id', $id)->first();
-        return view('candidate-profile', ['result' => $reslt]);
+        $ranks = Ranks::get();
+        $vessels = Vessel::get();
+        $vsltype = VslType::get();
+        $ports = Ports::get();
+        $contract = Contract::where('id', $id)->get();
+        $company = Company::select('company_id','company_name')->get();
+        $bankacs = BankAcs::where('mem_id', $id)->get();
+        return view('candidate-profile', [
+            'result' => $reslt, 
+            'ranks' => $ranks, 
+            'comps' => $company, 
+            'vessels' => $vessels, 
+            'vsltype' => $vsltype,
+            'ports' => $ports,
+            'contracts' => $contract,
+            'bankacs' => $bankacs
+        ]);
     }
 
     /**
