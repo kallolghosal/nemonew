@@ -37,7 +37,7 @@
                 </div>
                 <div class="tab-pane" id="contract">
                     <h4 class="mt-4">Add Contract</h4>
-                    <form action="" method="post">
+                    <form action="{{ route('store-contract') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col">
@@ -170,7 +170,9 @@
                                 <label for="eminum">Emigrate Number</label>
                                 <input type="text" name="eminum" id="" class="form-control">
                             </div>
-                            <div class="col"></div>
+                            <div class="col">
+                                <input type="hidden" name="memid" value="{{ $memid }}">
+                            </div>
                             <div class="col"></div>
                         </div>
                         <p class="mt-4"></p>

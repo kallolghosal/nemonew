@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <h2 style="display:inline">Add Contract</h2><a href="{{ route('contracts') }}" class="btn btn-primary btn-sm float-right">All Contracts</a>
-            <form action="" method="post">
+            <form action="{{ route('store-contract') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col">
@@ -138,7 +138,10 @@
                         <label for="eminum">Emigrate Number</label>
                         <input type="text" name="eminum" id="" class="form-control">
                     </div>
-                    <div class="col"></div>
+                    <div class="col">
+                        <label for="memid">Member ID</label>
+                        <input type="text" name="memid" class="form-control">
+                    </div>
                     <div class="col"></div>
                 </div>
                 <p class="mt-4"></p>

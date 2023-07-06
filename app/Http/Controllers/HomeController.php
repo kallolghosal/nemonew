@@ -107,7 +107,8 @@ class HomeController extends Controller
             'vsltype' => $vsltype,
             'ports' => $ports,
             'contracts' => $contract,
-            'bankacs' => $bankacs
+            'bankacs' => $bankacs,
+            'memid' => $id
         ]);
     }
 
