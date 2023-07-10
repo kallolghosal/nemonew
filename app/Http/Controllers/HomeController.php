@@ -96,7 +96,7 @@ class HomeController extends Controller
         $vessels = Vessel::get();
         $vsltype = VslType::get();
         $ports = Ports::get();
-        $contract = Contract::where('id', $id)->get();
+        $contract = Contract::where('mem_id', $id)->get();
         $company = Company::select('company_id','company_name')->get();
         $bankacs = BankAcs::where('mem_id', $id)->get();
         return view('candidate-profile', [

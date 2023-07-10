@@ -36,8 +36,10 @@
                     <p>orange orange orange orange orange</p>
                 </div>
                 <div class="tab-pane" id="contract">
-                    <h4 class="mt-4">Add Contract</h4>
-                    <form action="{{ route('store-contract') }}" method="post" enctype="multipart/form-data">
+                    <p class="mt-4"></p>
+                    <h4 style="display:inline">Contracts</h4><button class="btn btn-primary btn-sm ml-4" id="frmbtn">Add/Hide Contract</button>
+                    <p class="mt-4"></p>
+                    <form action="{{ route('store-contract') }}" method="post" enctype="multipart/form-data" id="contractfrm">
                         @csrf
                         <div class="row">
                             <div class="col">

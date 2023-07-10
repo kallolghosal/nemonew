@@ -404,5 +404,13 @@
 
     <!-- Page level custom scripts -->
     <script src="{{asset('js/demo/datatables-demo.js')}}"></script>
+    <script>
+        $(document).ready(function(){
+            $("#contractfrm").hide();
+            $("#frmbtn").click(function(){
+                $("#contractfrm").toggle('slow');
+            });
+        });
+    </script>
 </body>
 </html>

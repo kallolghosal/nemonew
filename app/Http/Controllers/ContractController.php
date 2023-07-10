@@ -83,7 +83,7 @@ class ContractController extends Controller
         $contract->c_sign_off_port = $request->portoff;
         $contract->c_wages = $request->wages;
         $contract->c_currency = $request->currency;
-        $contract->c_wages_type = $request->wagtype;
+        $contract->c_wages_types = $request->wagtype;
         $contract->c_reason_sign_off = $request->reason;
         $contract->files = $request->docs;
         $contract->aoa = $request->aoa;
@@ -115,7 +115,20 @@ class ContractController extends Controller
     public function edit($id)
     {
         $contract = Contract::where('id', $id)->get();
-        return view('edit-contract', ['contract' => $contract]);
+        $company = Company::select('company_id','company_name')->get();
+        $ranks = Ranks::get();
+        $vessels = Vessel::get();
+        $vsltype = VslType::get();
+        $ports = Ports::get();
+        return view('edit-contract', [
+            'contract' => $contract,
+            'comps' => $company,
+            'ranks' => $ranks,
+            'vessels' => $vessels, 
+            'vsltype' => $vsltype,
+            'ports' => $ports,
+            'memid' => $id
+        ]);
     }
 
     /**
@@ -125,9 +138,46 @@ class ContractController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        // $validate = $request->validate([
+        //     'rank' => 'required',
+        //     'company' => 'required',
+        //     'vessel' => 'required',
+        //     'vsltype' => 'required',
+        //     'portsn' => 'required',
+        //     'signdt' => 'required'
+        // ],[
+        //     'rank.required' => 'Please select rank',
+        //     'company.required' => 'Please select company',
+        //     'vessel.required' => 'Please select vessel',
+        //     'vsltype.required' => 'Please select vessel type',
+        //     'portsn.required' => 'Please enter sogn-on port',
+        //     'signdt.required' => 'Please enter sign date'
+        // ]);
+
+        $contract = new Contract;
+
+        $contract->where('id', $request->memid)->update([
+            'c_rank' => $request->rank,
+            'c_company' => $request->company,
+            'c_vslname' => $request->vessel,
+            'c_vessel' => $request->vsltype,
+            'c_sign_on_port' => $request->portsn,
+            'c_sign_on' => $request->signdt,
+            'c_wages_start' => $request->wagst,
+            'c_eoc' => $request->eoc,
+            'c_wages' => $request->wages,
+            'c_currency' => $request->currency,
+            'c_wages_types' => $request->wagtype,
+            'c_sign_off' => $request->signoff,
+            'c_sign_off_port' => $request->portoff,
+            'c_reason_sign_off' => $request->reason,
+            'files' => $request->docs,
+            'aoa' => $request->aoa
+        ]);
+
+        return \Redirect::route('edit-contract', $request->memid)->with(['message' => 'Contract updated successfully']);
     }
 
     /**

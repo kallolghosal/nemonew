@@ -124,8 +124,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('contracts', [ContractController::class, 'index'])->name('contracts');
     Route::get('show-contract/{id}', [ContractController::class, 'show'])->name('show-contract');
     Route::get('add-contract', [ContractController::class, 'create'])->name('add-contract');
-    Route::get('store-contract', [ContractController::class, 'store'])->name('store-contract');
+    Route::post('store-contract', [ContractController::class, 'store'])->name('store-contract');
     Route::get('edit-contract/{id}', [ContractController::class, 'edit'])->name('edit-contract');
+    Route::post('update-contract', [ContractController::class, 'update'])->name('update-contract');
     Route::get('delete-contract/{id}', [ContractController::class, 'destroy'])->name('delete-contract');
 
     Route::get('crew-planner', [CrewPlannerController::class, 'index'])->name('crew-planner');
