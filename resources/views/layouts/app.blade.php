@@ -71,6 +71,7 @@
                         <a class="collapse-item" href="{{ route('bank-accounts') }}">Bank Accounts</a>
                         <a class="collapse-item" href="{{ route('crew-planner') }}">Crew Planner</a>
                         <a class="collapse-item" href="{{ route('contracts') }}">All Contracts</a>
+                        <a class="collapse-item" href="{{ route('documents') }}">All Documents</a>
                     </div>
                 </div>
             </li>

@@ -15,6 +15,7 @@ use App\Http\Controllers\DiscussionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CrewPlannerController;
 use App\Http\Controllers\ContractController;
+use App\Http\Controllers\FileUploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -110,6 +111,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('show-discussion/{id}', [DiscussionController::class, 'show'])->name('show-discussion');
     Route::get('add-discussion', [DiscussionController::class, 'create'])->name('add-discussion');
     Route::get('edit-discussion/{id}', [DiscussionController::class, 'edit'])->name('edit-discussion');
+    Route::get('delete-discussion/{id}', [DiscussionController::class, 'destroy'])->name('delete-discussion');
 
     Route::get('all-candidates', [CandidatesController::class, 'index'])->name('candidates');
     Route::get('add-candidate', [CandidatesController::class, 'create'])->name('add-candidate');
@@ -120,6 +122,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('search-candidate', [HomeController::class, 'searchCandidate'])->name('search-candidate');
     Route::get('show-candidate/{id}', [HomeController::class, 'show'])->name('show-candidate');
     Route::get('delete-candidate/{id}', [HomeController::class, 'destroy'])->name('delete-candidate');
+
+    Route::get('documents', [FileUploadController::class, 'index'])->name('documents');
+    Route::get('show-file/{id}', [FileUploadController::class, 'show'])->name('show-file');
+    Route::get('edit-file/{id}', [FileUploadController::class, 'edit'])->name('edit-file');
+    Route::post('update-file', [FileUploadController::class, 'store'])->name('update-file');
+    Route::get('add-documents', [FileUploadController::class, 'create'])->name('add-docs');
+    Route::post('store-doc', [FileUploadController::class, 'store'])->name('store-doc');
+    Route::get('delete-document/{id}', [FileUploadController::class, 'destroy'])->name('delete-document');
 
     Route::get('contracts', [ContractController::class, 'index'])->name('contracts');
     Route::get('show-contract/{id}', [ContractController::class, 'show'])->name('show-contract');

@@ -32,8 +32,85 @@
                     </table>
                 </div>
                 <div class="tab-pane" id="discussion">
-                    <h4>Last Call</h4>
-                    <p>orange orange orange orange orange</p>
+                    <p class="mt-4"></p>
+                    <h4>Discussions</h4>
+                    <p class="mt-4"></p>
+                    <form action="" method="post">
+                        @csrf
+                        <div class="row">
+                            <div class="col">
+                                <label for="avldt">Available Dt</label>
+                                <input type="date" name="avldt" class="form-control" id="">
+                            </div>
+                            <div class="col">
+                                <label for="lastsal">Last Salary</label>
+                                <input type="text" name="lastsal" class="form-control" id="">
+                            </div>
+                            <div class="col">
+                                <label for="lastcomp">Last Company</label>
+                                <input type="text" name="lastcomp" class="form-control" id="">
+                            </div>
+                            <div class="col">
+                                <label for="rank">Rank</label>
+                                <select name="rank" id="" class="form-control">
+                                    @foreach($ranks as $rank)
+                                    <option value="{{ $rank->rank }}">{{ $rank->rank }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <p class="mt-4"></p>
+                        <div class="row">
+                            <div class="col">
+                                <label for="vsltype">Vessel Type</label>
+                                <select name="vsltype" id="" class="form-control">
+                                    <option value="">Select Vessel Type</option>
+                                    @foreach($vsltype as $vslt)
+                                    <option value="{{ $vslt->vessel }}">{{ $vslt->vessel }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="status">Status</label>
+                                <select name="status" id="" class="form-control">
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                </select>
+                            </div>
+                            <div class="col"></div>
+                            <div class="col"></div>
+                        </div>
+                        <p class="mt-4"></p>
+                        <input type="submit" value="Submit" name="submit" class="btn btn-primary">
+                    </form>
+                    @if($discus->isEmpty())
+                    <p>No records found</p>
+                    @else
+                    <table class="table table-striped mt-4">
+                        <thead>
+                            <tr>
+                                <td>Mem ID</td>
+                                <td>Company</td>
+                                <td>Join Dt</td>
+                                <td>Discussion</td>
+                                <td>Posted By</td>
+                                <td>Edit</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($discus as $dscus)
+                            <tr>
+                                <td>{{ $dscus->mem_id }}</td>
+                                <td>{{ $dscus->companyname }}</td>
+                                <td>{{ $dscus->join_date }}</td>
+                                <td>{{ $dscus->discussion }}</td>
+                                <td>{{ $dscus->post_by }}</td>
+                                <td><a href="{{ route('show-discussion', $dscus->disc_id) }}"><i class="bi bi-eye"></i></a>&nbsp;<a href="{{ route('edit-discussion', $dscus->disc_id) }}"><i class="bi bi-pencil"></i></a>&nbsp;<a href="{{ route('delete-discussion', $dscus->disc_id) }}" onclick="return confirm('Are you sure you want to delete this discussion?');"><i class="bi bi-trash"></i></a></td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    @endif
                 </div>
                 <div class="tab-pane" id="contract">
                     <p class="mt-4"></p>
@@ -211,8 +288,36 @@
                     @endif
                 </div>
                 <div class="tab-pane" id="document">
-                    <h4>Document</h4>
-                    <p>green green green green green</p>
+                    <p class="mt-4"></p>
+                    <h4>Docs of {{ $result->fname }}</h4>
+                    @if($fileuploads->isEmpty())
+                    <p>No records found</p>
+                    @else
+                    <table class="table table-striped mt-4">
+                        <thead>
+                            <tr>
+                                <td>ID</td>
+                                <td>Doc Detail</td>
+                                <td>Doc No</td>
+                                <td>Issue Dt</td>
+                                <td>Exp dt</td>
+                                <td>Edit</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($fileuploads as $files)
+                            <tr>
+                                <td>{{ $files->mid }}</td>
+                                <td>{{ $files->doc_details }}</td>
+                                <td>{{ $files->doc_number }}</td>
+                                <td>{{ $files->doc_issue_date }}</td>
+                                <td>{{ $files->doc_expiry_date }}</td>
+                                <td><a href="{{ route('show-file', $files->id) }}"><i class="bi bi-eye"></i></a>&nbsp;<a href="{{ route('edit-file', $files->id) }}"><i class="bi bi-pencil"></i></a>&nbsp;<a href="{{ route('delete-document', $files->id) }}" onclick="return confirm('Are you sure you want to delete this document?');"><i class="bi bi-trash"></i></a></td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    @endif
                 </div>
                 <div class="tab-pane" id="bank">
                     <h4 class="mt-4">Bank Account Details</h4>
