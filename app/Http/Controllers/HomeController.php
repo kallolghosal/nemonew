@@ -13,6 +13,7 @@ use App\Models\Ports;
 use App\Models\BankAcs;
 use App\Models\FileUpload;
 use App\Models\Discussions;
+use App\Models\TravelModel;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -103,6 +104,7 @@ class HomeController extends Controller
         $bankacs = BankAcs::where('mem_id', $id)->get();
         $fileuploads = FileUpload::where('mid', $id)->get();
         $discus = Discussions::where('mem_id', $id)->get();
+        $travel = TravelModel::where('mem_id', $id)->get();
         return view('candidate-profile', [
             'result' => $reslt, 
             'ranks' => $ranks, 
@@ -114,6 +116,7 @@ class HomeController extends Controller
             'bankacs' => $bankacs,
             'fileuploads' => $fileuploads,
             'discus' => $discus,
+            'travel' => $travel,
             'memid' => $id
         ]);
     }

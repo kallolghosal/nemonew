@@ -16,6 +16,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CrewPlannerController;
 use App\Http\Controllers\ContractController;
 use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\TravelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -146,4 +147,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('edit-planner/{id}', [CrewPlannerController::class, 'edit'])->name('edit-planner');
     Route::post('update-planner', [CrewPlannerController::class, 'update'])->name('update-planner');
     Route::get('delete-planner/{id}', [CrewPlannerController::class, 'destroy'])->name('delete-planner');
+
+    Route::get('edit-travel/{id}', [TravelController::class, 'edit'])->name('edit-travel');
+    Route::get('show-travel/{id}', [TravelController::class, 'show'])->name('show-travel');
+    Route::get('delete-travel/{id}', [TravelController::class, 'destroy'])->name('delete-travel');
+    Route::get('travels', [TravelController::class, 'index'])->name('travels');
+    Route::get('add-travel', [TravelController::class, 'create'])->name('add-travel');
 });

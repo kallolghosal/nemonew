@@ -351,8 +351,38 @@
                     @endif
                 </div>
                 <div class="tab-pane" id="travel">
+                    <p class="mt-4"></p>
                     <h4>Travel</h4>
-                    <p>blue blue blue blue blue</p>
+                    @if($travel->isEmpty())
+                    <p>No records found</p>
+                    @else
+                    <table class="table table-striped mt-4">
+                        <thead>
+                            <tr>
+                                <td>ID</td>
+                                <td>Date</td>
+                                <td>From</td>
+                                <td>To</td>
+                                <td>Status</td>
+                                <td>Port</td>
+                                <td>Edit</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($travel as $trav)
+                            <tr>
+                                <td>{{ $trav->mem_id }}</td>
+                                <td>{{ $trav->t_date }}</td>
+                                <td>{{ $trav->t_from }}</td>
+                                <td>{{ $trav->t_to }}</td>
+                                <td>{{ $trav->t_status }}</td>
+                                <td>{{ $trav->t_port_agent }}</td>
+                                <td><a href="{{ route('show-travel', $trav->id) }}"><i class="bi bi-eye"></i></a>&nbsp;<a href="{{ route('edit-travel', $trav->id) }}"><i class="bi bi-pencil"></i></a>&nbsp;<a href="{{ route('delete-travel', $trav->id) }}" onclick="return confirm('Are you sure you want to delete this Travel Ac?');"><i class="bi bi-trash"></i></a></td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    @endif
                 </div>
                 <div class="tab-pane" id="medical">
                     <h4>Medicals</h4>
