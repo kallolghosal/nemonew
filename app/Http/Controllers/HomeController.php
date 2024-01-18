@@ -81,7 +81,7 @@ class HomeController extends Controller
         }
         
         if($result->isEmpty()) {
-            return view('search', ['result' => 'No record found']);
+            return view('search', ['result' => 0]);
         } else {
             return view('search', ['result' => $result]);
         }

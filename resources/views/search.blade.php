@@ -5,6 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <h2>Search Result</h2>
+            @if ($result == null)
+            No records found
+            @else
             <table class="table table-striped mt-4">
                 <thead>
                     <tr>
@@ -32,6 +35,7 @@
                 </tbody>
             </table>
             {!! $result->withQueryString()->links('pagination::bootstrap-5') !!}
+            @endif
         </div>
     </div>
 </div>
